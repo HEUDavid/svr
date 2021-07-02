@@ -49,3 +49,13 @@ echo "config is ready? ${config_ok}"
 
 echo "end"
 
+#echo "how to install vpn: https://github.com/hwdsl2/docker-ipsec-vpn-server/blob/master/README-zh.md"
+#docker run \
+#    --name ipsec-vpn-server \
+#    --env-file ./vpn.env \
+#    --restart=always \
+#    -v ikev2-vpn-data:/etc/ipsec.d \
+#    -p 500:500/udp \
+#    -p 4500:4500/udp \
+#    -d --privileged \
+#    hwdsl2/ipsec-vpn-server
