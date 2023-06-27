@@ -1,24 +1,33 @@
 #!/bin/sh
 
-#echo "安装docker"
-#dnf config-manager --add-repo=https://download.docker.com/linux/centos/docker-ce.repo
-#dnf install https://download.docker.com/linux/centos/7/x86_64/stable/Packages/containerd.io-1.4.6-3.1.el7.x86_64.rpm -y
-#dnf install docker-ce -y
-## systemctl disable firewalld
-#systemctl enable --now docker
-#echo "install pkg"
-#dnf install git -y
+# 新建david用户
+useradd david
+passwd david
 
+# 赋予sudo权限
+usermod -aG wheel david
+
+# 安装必备工具
+sudo yum install git vim -y
+
+# echo "安装docker"
+curl -fsSL https://get.docker.com -o get-docker.sh
+sh get-docker.sh
+
+# 启动
+systemctl start docker
+
+# 下载初始化脚本
 git clone https://github.com/HEUDavid/svr.git
 
-echo "plz upload ssl ===================> cd /root/svr/nginx/conf.d/ssl"
+echo "plz upload ssl ===================> cd /home/david/svr/nginx/conf.d/ssl"
 
 echo "if ssl is ready, plz input yes..."
 read ssl_ok
 echo "ssl is ready? ${ssl_ok}"
 
 echo "nginx"
-docker run -itd --name nginx -p 80:80 -p 443:443 -v /root/svr/nginx/conf.d:/etc/nginx/conf.d -v /root/svr/nginx/log:/var/log/nginx -v /root/svr/nginx/html:/usr/share/nginx/html nginx
+docker run -itd --name nginx -p 80:80 -p 443:443 -v /home/david/svr/nginx/conf.d:/etc/nginx/conf.d -v /root/svr/nginx/log:/var/log/nginx -v /root/svr/nginx/html:/usr/share/nginx/html nginx
 
 echo "mysql"
 echo "input passwd for root plz"
@@ -49,13 +58,4 @@ echo "config is ready? ${config_ok}"
 
 echo "end"
 
-#echo "how to install vpn: https://github.com/hwdsl2/docker-ipsec-vpn-server/blob/master/README-zh.md"
-#docker run \
-#    --name ipsec-vpn-server \
-#    --env-file ./vpn.env \
-#    --restart=always \
-#    -v ikev2-vpn-data:/etc/ipsec.d \
-#    -p 500:500/udp \
-#    -p 4500:4500/udp \
-#    -d --privileged \
-#    hwdsl2/ipsec-vpn-server
+
