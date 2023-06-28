@@ -40,8 +40,6 @@ echo "my_dev"
 docker build -t my-dev-image .
 docker run -d -p 2222:22 --name my-dev-container -v ${path}/workspace:/workspace my-dev-image
 
-
-docker run -d --name v2ray -v ${path}/v2ray/config.json:/etc/v2fly/config.json -v ${path}/v2ray/log:/var/log/v2ray -p 3306:3306 v2fly/v2fly-core run -c /etc/v2fly/config.json
-
+docker run -d -p 10086:10086 --name v2ray -v ${path}/v2ray/config.json:/etc/v2fly/config.json -v ${path}/v2ray/log:/var/log/v2ray v2fly/v2fly-core run -c /etc/v2fly/config.json
 
 echo "end"

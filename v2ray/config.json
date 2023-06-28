@@ -1,50 +1,20 @@
 {
-  "log": {
-    "loglevel": "warning",
-    "access": "/var/log/v2ray/access.log",
-    "error": "/var/log/v2ray/error.log"
-  },
   "inbounds": [
     {
-      "port": 3306,
+      "port": 10086,
       "protocol": "vmess",
       "settings": {
         "clients": [
           {
-            "id": "60476d26-825f-149c-1182-189722ba07db",
-            "level": 1
+            "id": "dc4016ad-fd99-11ae-0e58-ad22a5bf2687"
           }
         ]
-      },
-      "streamSettings": {
-        "network": "ws",
-        "wsSettings": {
-          "path": "/hello"
-        }
-      },
-      "listen": "0.0.0.0"
+      }
     }
   ],
   "outbounds": [
     {
-      "protocol": "freedom",
-      "settings": {}
-    },
-    {
-      "protocol": "blackhole",
-      "settings": {},
-      "tag": "blocked"
+      "protocol": "freedom"
     }
-  ],
-  "routing": {
-    "rules": [
-      {
-        "type": "field",
-        "ip": [
-          "geoip:private"
-        ],
-        "outboundTag": "blocked"
-      }
-    ]
-  }
+  ]
 }
