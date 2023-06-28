@@ -6,7 +6,7 @@
 # 安装必备工具
 yum install git vim lrzsz -y
 
-# echo "安装docker"
+echo "安装docker"
 curl -fsSL https://get.docker.com -o get-docker.sh
 sh get-docker.sh
 
@@ -38,6 +38,9 @@ docker run -itd --name mysql --restart=always -p 4306:3306 -v ${path}/mysql:/var
 
 echo "v2ray"
 echo "modify uuid first"
+read uuid_ok
+echo "v2ray v2ray is ready? ${uuid_ok}"
+
 docker run -d -p 10086:10086 --name v2ray -v ${path}/v2ray/config.json:/etc/v2fly/config.json -v ${path}/v2ray/log:/var/log/v2ray v2fly/v2fly-core run -c /etc/v2fly/config.json
 
 echo "my-dev-image"
