@@ -60,10 +60,14 @@ if [ "$passwd_ok" != "yes" ]; then
   exit 1
 fi
 
-docker build -t my-python-image -f python.Dockerfile "${path}"
-docker build -t my-golang-image -f golang.Dockerfile "${path}"
+
+path=/root/svr
+docker build -f "$path/python.Dockerfile" -t my-python-image "$path"
+docker build -f "$path/golang.Dockerfile" -t my-golang-image "$path"
 
 docker run -d -p 2222:22 --name python-container -v "${path}/workspace:/workspace" my-python-image
 docker run -d -p 3222:22 --name golang-container -v "${path}/workspace:/workspace" my-golang-image
+
+
 
 printf "部署完成！\n"
