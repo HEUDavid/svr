@@ -59,7 +59,7 @@ if [ "$passwd_ok" != "yes" ]; then
   printf "请先修改ssh登录密码，然后重新执行脚本...\n"
   exit 1
 fi
-docker build -t my-dev-image "${path}/my-dev-image"
+docker build -t my-dev-image "${path}"
 docker run -d -p 2222:22 --name my-dev-container -v "${path}/workspace:/workspace" my-dev-image
 
 printf "部署完成！\n"
