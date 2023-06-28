@@ -53,6 +53,12 @@ docker run -d -p 10086:10086 --name v2ray --restart=always -v "${path}/v2ray/con
 
 # 自定义镜像启动
 printf "启动自定义镜像...\n"
+printf "请先修改ssh登录密码\n"
+read passwd_ok
+if [ "$passwd_ok" != "yes" ]; then
+  printf "请先修改ssh登录密码，然后重新执行脚本...\n"
+  exit 1
+fi
 docker build -t my-dev-image "${path}/my-dev-image"
 docker run -d -p 2222:22 --name my-dev-container -v "${path}/workspace:/workspace" my-dev-image
 
