@@ -36,4 +36,8 @@ read passwd
 echo "root:${passwd}"
 docker run -itd --name mysql --restart=always -p 4306:3306 -v ${path}/mysql:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=${passwd} mariadb
 
+echo "my_dev"
+docker build -t my-dev-image .
+docker run -d -p 2222:22 --name my-dev-container -v ${path}/workspace:/workspace my-dev-image
+
 echo "end"

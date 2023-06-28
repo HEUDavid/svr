@@ -2,7 +2,6 @@
 
 path=/root/svr
 
-
 echo "plz create database for wordpress, if database is ready, plz input yes..."
 read db_ok
 echo "db is ready? ${db_ok}"
