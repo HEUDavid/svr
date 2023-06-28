@@ -1,16 +1,18 @@
 #!/bin/sh
 
 # 系统更新
-#yum update
+yum update -y
 
 # 安装必备工具
-yum install git vim lrzsz -y
+yum install curl git vim lrzsz -y
 
-echo "安装docker"
+# 安装docker
+printf "正在安装docker...\n"
 curl -fsSL https://get.docker.com -o get-docker.sh
 sh get-docker.sh
+rm get-docker.sh
 
-# 开机自启
+# 开机自启docker
 systemctl enable docker
 
 # 启动
@@ -18,33 +20,40 @@ systemctl start docker
 
 # 下载初始化脚本
 git clone https://github.com/HEUDavid/svr.git
-
 path=/root/svr
 
-echo "plz upload ssl ===================> cd ${path}/nginx/conf.d/ssl"
-
-echo "if ssl is ready, plz input yes..."
+printf "请上传SSL证书至 ${path}/nginx/conf.d/ssl\n"
+printf "如果准备好，请输入yes...\n"
 read ssl_ok
-echo "ssl is ready? ${ssl_ok}"
+if [ "$ssl_ok" != "yes" ]; then
+  printf "SSL证书未准备好，退出部署...\n"
+  exit 1
+fi
 
-echo "nginx"
-docker run -itd --name nginx --restart=always -p 80:80 -p 443:443 -v ${path}/nginx/conf.d:/etc/nginx/conf.d -v ${path}/nginx/log:/var/log/nginx -v ${path}/nginx/html:/usr/share/nginx/html nginx
+# Nginx容器启动
+printf "启动Nginx容器...\n"
+docker run -itd --name nginx --restart=always -p 80:80 -p 443:443 -v "${path}/nginx/conf.d:/etc/nginx/conf.d" -v "${path}/nginx/log:/var/log/nginx" -v "${path}/nginx/html:/usr/share/nginx/html" nginx
 
-echo "mysql"
-echo "input passwd for root plz"
-read passwd
-echo "root:${passwd}"
-docker run -itd --name mysql --restart=always -p 4306:3306 -v ${path}/mysql:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=${passwd} mariadb
+# MySQL容器启动
+printf "启动MySQL容器...\n"
+printf "请输入root用户的密码：\n"
+read -s passwd
+docker run -itd --name mysql --restart=always -p 4306:3306 -v "${path}/mysql:/var/lib/mysql" -e MYSQL_ROOT_PASSWORD="${passwd}" mariadb
 
-echo "v2ray"
-echo "modify uuid first"
+# V2Ray容器启动
+printf "启动V2Ray容器...\n"
+printf "请先修改${path}/v2ray/config.json文件中的uuid字段\n"
 read uuid_ok
-echo "v2ray v2ray is ready? ${uuid_ok}"
+if [ "$uuid_ok" != "yes" ]; then
+  printf "请先修改uuid字段，然后重新执行脚本...\n"
+  exit 1
+fi
 
-docker run -d -p 10086:10086 --name v2ray -v ${path}/v2ray/config.json:/etc/v2fly/config.json -v ${path}/v2ray/log:/var/log/v2ray v2fly/v2fly-core run -c /etc/v2fly/config.json
+docker run -d -p 10086:10086 --name v2ray --restart=always -v "${path}/v2ray/config.json:/etc/v2fly/config.json" -v "${path}/v2ray/log:/var/log/v2ray" v2fly/v2fly-core run -c /etc/v2fly/config.json
 
-echo "my-dev-image"
-docker build -t my-dev-image .
-docker run -d -p 2222:22 --name my-dev-container -v ${path}/workspace:/workspace my-dev-image
+# 自定义镜像启动
+printf "启动自定义镜像...\n"
+docker build -t my-dev-image "${path}/my-dev-image"
+docker run -d -p 2222:22 --name my-dev-container -v "${path}/workspace:/workspace" my-dev-image
 
-echo "end"
+printf "部署完成！\n"
