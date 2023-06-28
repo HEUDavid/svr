@@ -36,10 +36,12 @@ read passwd
 echo "root:${passwd}"
 docker run -itd --name mysql --restart=always -p 4306:3306 -v ${path}/mysql:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=${passwd} mariadb
 
-echo "my_dev"
+echo "v2ray"
+echo "modify uuid first"
+docker run -d -p 10086:10086 --name v2ray -v ${path}/v2ray/config.json:/etc/v2fly/config.json -v ${path}/v2ray/log:/var/log/v2ray v2fly/v2fly-core run -c /etc/v2fly/config.json
+
+echo "my-dev-image"
 docker build -t my-dev-image .
 docker run -d -p 2222:22 --name my-dev-container -v ${path}/workspace:/workspace my-dev-image
-
-docker run -d -p 10086:10086 --name v2ray -v ${path}/v2ray/config.json:/etc/v2fly/config.json -v ${path}/v2ray/log:/var/log/v2ray v2fly/v2fly-core run -c /etc/v2fly/config.json
 
 echo "end"
