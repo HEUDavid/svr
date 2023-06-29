@@ -37,33 +37,23 @@ docker run -itd --name nginx --restart=always -p 80:80 -p 443:443 -v "${path}/ng
 # MySQL容器启动
 printf "启动MySQL容器...\n"
 printf "请输入root用户的密码：\n"
-read -s passwd
+read passwd
 docker run -itd --name mysql --restart=always -p 4306:3306 -v "${path}/mysql:/var/lib/mysql" -e MYSQL_ROOT_PASSWORD="${passwd}" mariadb
 
 # V2Ray容器启动
 printf "启动V2Ray容器...\n"
-printf "请先修改${path}/v2ray/config.json文件中的uuid字段\n"
-read uuid_ok
-if [ "$uuid_ok" != "yes" ]; then
-  printf "请先修改uuid字段，然后重新执行脚本...\n"
-  exit 1
-fi
-
+read uuid
+sed -i "s/uuid_for_update/${uuid}/g" "${path}/v2ray/config.json"
 docker run -d -p 10086:10086 --name v2ray --restart=always -v "${path}/v2ray/config.json:/etc/v2fly/config.json" -v "${path}/v2ray/log:/var/log/v2ray" v2fly/v2fly-core run -c /etc/v2fly/config.json
 
 # 自定义镜像启动
 printf "启动自定义镜像...\n"
-printf "请先修改ssh登录密码\n"
-read passwd_ok
-if [ "$passwd_ok" != "yes" ]; then
-  printf "请先修改ssh登录密码，然后重新执行脚本...\n"
-  exit 1
-fi
+sed -i "s/password_for_update/${passwd}/g" "${path}/python.Dockerfile"
+sed -i "s/password_for_update/${passwd}/g" "${path}/golang.Dockerfile"
 
 
-path=/root/svr
-docker build -f "$path/python.Dockerfile" -t my-python-image "$path"
-docker build -f "$path/golang.Dockerfile" -t my-golang-image "$path"
+docker build -f "${path}/python.Dockerfile" -t my-python-image "${path}"
+docker build -f "${path}/golang.Dockerfile" -t my-golang-image "${path}"
 
 docker run -d -p 2222:22 --name python-container -v "${path}/workspace:/workspace" my-python-image
 docker run -d -p 3222:22 --name golang-container -v "${path}/workspace:/workspace" my-golang-image
