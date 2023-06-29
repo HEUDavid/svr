@@ -62,7 +62,7 @@ sed -i "s/password_for_update/${passwd}/g" "${path}/golang.Dockerfile"
 docker build -f "${path}/python.Dockerfile" -t my-python-image "${path}"
 docker build -f "${path}/golang.Dockerfile" -t my-golang-image "${path}"
 
-docker run -d -p 2222:22 --name python-container -v "${path}/workspace:/workspace" my-python-image
-docker run -d -p 3222:22 --name golang-container -v "${path}/workspace:/workspace" my-golang-image
+docker run -d -p 2222:22 --restart=always --name python-container -v "${path}/workspace:/workspace" my-python-image
+docker run -d -p 3222:22 --restart=always --name golang-container -v "${path}/workspace:/workspace" my-golang-image
 
 printf "部署完成！\n"
