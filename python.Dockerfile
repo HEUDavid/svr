@@ -9,7 +9,7 @@ RUN apt-get update && \
 
 # 配置SSH
 RUN mkdir /var/run/sshd
-RUN echo 'root:password' | chpasswd
+RUN echo 'root:password_for_update' | chpasswd
 RUN sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
 RUN sed -i 's/#PasswordAuthentication yes/PasswordAuthentication yes/' /etc/ssh/sshd_config
 
