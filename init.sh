@@ -8,8 +8,7 @@ yum install curl git vim lrzsz ntpdate -y
 
 # 设置时区为Asia/Shanghai
 timedatectl set-timezone Asia/Shanghai
-
-ntpdate pool.ntp.org
+ntpdate cn.pool.ntp.org
 
 # 将系统时间写入硬件时钟
 hwclock --systohc
