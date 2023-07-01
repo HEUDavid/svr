@@ -4,15 +4,13 @@
 yum update -y
 
 # 安装必备工具
-yum install curl git vim lrzsz ntpdate -y
+yum install curl git vim lrzsz chrony -y
 
-# 设置时区为Asia/Shanghai
-timedatectl set-timezone Asia/Shanghai
-ntpdate cn.pool.ntp.org
 
-# 将系统时间写入硬件时钟
-hwclock --systohc
-
+# 启动chronyd服务并设置自动启动
+systemctl start chronyd
+systemctl enable chronyd
+timedatectl set-timezone Asia/Hong_Kong
 echo "CentOS 7时区设置完成！当前时间为：$(date)"
 
 # 下载初始化脚本
