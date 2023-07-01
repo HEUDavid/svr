@@ -4,13 +4,18 @@
 yum update -y
 
 # 安装必备工具
-yum install curl git vim lrzsz chrony -y
+yum install curl git vim lrzsz ntp -y
 
-
-# 启动chronyd服务并设置自动启动
-systemctl start chronyd
-systemctl enable chronyd
+# 校准服务器时间，使用谷歌时间服务
 timedatectl set-timezone Asia/Hong_Kong
+sed -i "s/0.centos.pool.ntp.org/216.239.35.0/g" /etc/ntp.conf
+sed -i "s/1.centos.pool.ntp.org/216.239.35.4/g" /etc/ntp.conf
+sed -i "s/2.centos.pool.ntp.org/216.239.35.8/g" /etc/ntp.conf
+sed -i "s/3.centos.pool.ntp.org/216.239.35.12/g" /etc/ntp.conf
+systemctl disable chronyd
+systemctl stop chronyd
+systemctl enable ntpd
+systemctl start ntpd
 echo "CentOS 7时区设置完成！当前时间为：$(date)"
 
 # 下载初始化脚本
