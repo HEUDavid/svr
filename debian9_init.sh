@@ -10,7 +10,7 @@ EOF
 apt-get update && apt-get upgrade -y
 
 # 安装必备工具
-apt-get install git vim lrzsz -y
+apt-get install curl git vim lrzsz -y
 
 # 校准服务器时间，使用谷歌时间服务
 timedatectl set-timezone Asia/Hong_Kong
