@@ -1,6 +1,10 @@
 #!/bin/sh
 
-# 校准服务器时间，使用谷歌时间服务ip
+
+echo "fs.inotify.max_user_watches=524288" >> /etc/sysctl.conf
+sysctl -p
+
+# 服务器时间同步切换为谷歌IP
 sed -i "s/0.centos.pool.ntp.org/216.239.35.0/g" /etc/chrony.conf
 sed -i "s/1.centos.pool.ntp.org/216.239.35.4/g" /etc/chrony.conf
 sed -i "s/2.centos.pool.ntp.org/216.239.35.8/g" /etc/chrony.conf
