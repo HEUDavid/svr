@@ -14,19 +14,11 @@ sh -c 'sed -i "/# GitHub520 Host Start/Q" /etc/hosts && curl https://raw.hellogi
 
 # 下载初始化脚本
 git clone https://github.com/HEUDavid/svr.git
-
 path=/root/svr
 
 printf "请输入密码：\n"
 read passwd
 echo "passwd: ${passwd}"
-
-printf "如果确认ok，请输入yes...\n"
-read ready
-if [ "$ready" != "yes" ]; then
-  printf "信息有误，退出部署...\n"
-  exit 1
-fi
 
 # 安装docker
 printf "正在安装docker...\n"

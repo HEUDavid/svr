@@ -1,6 +1,5 @@
 #!/bin/sh
 
-
 echo "fs.inotify.max_user_watches=524288" >> /etc/sysctl.conf
 sysctl -p
 
@@ -20,8 +19,8 @@ yum install curl git vim lrzsz -y
 
 # 下载初始化脚本
 git clone https://github.com/HEUDavid/svr.git
-
 path=/root/svr
+
 printf "请上传SSL证书至 ${path}/nginx/conf.d/ssl\n"
 
 printf "请输入密码：\n"
