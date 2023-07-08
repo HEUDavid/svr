@@ -9,9 +9,6 @@ yum update -y
 # 安装必备工具
 yum install curl git vim lrzsz -y
 
-# 加速GitHub
-sh -c 'sed -i "/# GitHub520 Host Start/Q" /etc/hosts && curl https://raw.hellogithub.com/hosts >> /etc/hosts'
-
 # 下载初始化脚本
 git clone https://github.com/HEUDavid/svr.git
 path=/root/svr
