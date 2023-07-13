@@ -29,7 +29,7 @@ alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 
-alias cdp='cd /workspace/go-project'
+alias cdg='cd /workspace/go-project'
 
 export GOPATH=/go
 export PATH="/usr/local/go/bin:\$GOPATH/bin:\$PATH"
