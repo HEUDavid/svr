@@ -30,6 +30,10 @@ alias cp='cp -i'
 alias mv='mv -i'
 
 alias cdp='cd /workspace/py-project'
+export TZ='Asia/Shanghai'
+
+export PATH='/workspace/py-project/.v/bin:\$PATH'
+export PYTHONPATH='/workspace/py-project/.v/lib/python3.11/site-packages:\$PYTHONPATH'
 
 EOF
 

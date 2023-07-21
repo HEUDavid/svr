@@ -30,9 +30,10 @@ alias cp='cp -i'
 alias mv='mv -i'
 
 alias cdg='cd /workspace/go-project'
+export TZ='Asia/Shanghai'
 
-export GOPATH=/go
-export PATH="/usr/local/go/bin:\$GOPATH/bin:\$PATH"
+export GOPATH='/go'
+export PATH='/usr/local/go/bin:\$GOPATH/bin:\$PATH'
 
 EOF
 
