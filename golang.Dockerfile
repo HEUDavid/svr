@@ -14,6 +14,14 @@ RUN sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/
 RUN sed -i 's/#PasswordAuthentication yes/PasswordAuthentication yes/' /etc/ssh/sshd_config
 
 
+RUN cat > /root/.vimrc <<EOF
+set encoding=utf-8
+syntax on
+colorscheme desert
+set tabstop=4
+
+EOF
+
 RUN cat > /root/.bashrc <<EOF
 # ~/.bashrc: executed by bash(1) for non-login shells.
 
