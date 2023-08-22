@@ -25,6 +25,7 @@ printf "请上传SSL证书至 ${path}/nginx/conf.d/ssl\n"
 
 printf "请输入密码：\n"
 read passwd
+
 printf "请输入uuid：\n"
 read uuid
 
@@ -67,13 +68,15 @@ docker run -d -p 10086:10086 --name v2ray --restart=always -v "${path}/v2ray/con
 
 # 自定义镜像启动
 printf "启动自定义镜像...\n"
+
+# Python容器启动
 sed -i "s/password_for_update/${passwd}/g" "${path}/python.Dockerfile"
-sed -i "s/password_for_update/${passwd}/g" "${path}/golang.Dockerfile"
-
 docker build -f "${path}/python.Dockerfile" -t my-python-image "${path}"
-docker build -f "${path}/golang.Dockerfile" -t my-golang-image "${path}"
-
 docker run -d -p 2222:22 --restart=always --name python-container -v "${path}/workspace:/workspace" my-python-image
+
+# Golang容器启动
+sed -i "s/password_for_update/${passwd}/g" "${path}/golang.Dockerfile"
+docker build -f "${path}/golang.Dockerfile" -t my-golang-image "${path}"
 docker run -d -p 3222:22 --restart=always --name golang-container -v "${path}/workspace:/workspace" my-golang-image
 
 printf "部署完成！\n"
