@@ -40,6 +40,7 @@ alias mv='mv -i'
 
 alias cdg='cd /workspace/go-project'
 export TZ='Asia/Shanghai'
+export LANG=C.UTF-8
 
 export GOPATH=/go
 export PATH=/usr/local/go/bin:\$GOPATH/bin:\$PATH

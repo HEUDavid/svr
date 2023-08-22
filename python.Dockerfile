@@ -40,6 +40,7 @@ alias mv='mv -i'
 
 alias cdp='cd /workspace/py-project'
 export TZ='Asia/Shanghai'
+export LANG=C.UTF-8
 
 EOF
 
