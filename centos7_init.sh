@@ -1,16 +1,5 @@
 #!/bin/bash
 
-echo "fs.inotify.max_user_watches=524288" >> /etc/sysctl.conf
-sysctl -p
-
-# 使用谷歌IP校正服务器时间
-sed -i "s/0.centos.pool.ntp.org/216.239.35.0/g" /etc/chrony.conf
-sed -i "s/1.centos.pool.ntp.org/216.239.35.4/g" /etc/chrony.conf
-sed -i "s/2.centos.pool.ntp.org/216.239.35.8/g" /etc/chrony.conf
-sed -i "s/3.centos.pool.ntp.org/216.239.35.12/g" /etc/chrony.conf
-systemctl restart chronyd
-echo "当前时间为：$(date)"
-
 # 系统更新
 yum update -y
 
@@ -50,6 +39,7 @@ if [ "$ready" != "yes" ]; then
   printf "信息有误，退出部署...\n"
   exit 1
 fi
+
 
 # 安装docker
 printf "正在安装docker...\n"
@@ -93,5 +83,18 @@ if [[ "${containers[@]}" =~ "golang" ]]; then
     docker build -f "${path}/golang.Dockerfile" -t my-golang-image "${path}"
     docker run -d -p 3222:22 --restart=always --name golang-container -v "${path}/workspace:/workspace" my-golang-image
 fi
+
+
+echo "fs.inotify.max_user_watches=524288" >> /etc/sysctl.conf
+sysctl -p
+
+# 使用谷歌IP校正服务器时间
+sed -i "s/0.centos.pool.ntp.org/216.239.35.0/g" /etc/chrony.conf
+sed -i "s/1.centos.pool.ntp.org/216.239.35.4/g" /etc/chrony.conf
+sed -i "s/2.centos.pool.ntp.org/216.239.35.8/g" /etc/chrony.conf
+sed -i "s/3.centos.pool.ntp.org/216.239.35.12/g" /etc/chrony.conf
+systemctl restart chronyd
+echo "当前时间为：$(date)"
+
 
 printf "部署完成！\n"
