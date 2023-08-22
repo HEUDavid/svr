@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # 新建david用户
 # useradd david
