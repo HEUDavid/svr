@@ -61,7 +61,7 @@ fi
 
 if [[ "${containers[@]}" =~ "mysql" ]]; then
     printf "启动MySQL容器...\n"
-    docker run -itd --name mysql --restart=always -p 4306:3306 -v "${path}/mysql:/var/lib/mysql" -e MYSQL_ROOT_PASSWORD="${passwd}" mariadb
+    docker run -itd --name mysql --restart=always -p 4306:3306 -v "${path}/mysql:/var/lib/mysql" -e MYSQL_ROOT_PASSWORD="${passwd}" -e TZ=Asia/Shanghai mariadb
 fi
 
 if [[ "${containers[@]}" =~ "v2ray" ]]; then
