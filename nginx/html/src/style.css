@@ -22,7 +22,7 @@ body {
 .context {
     width: 100%;
     position: absolute;
-    top: 38vh;
+    top: 36vh;
 }
 
 .context h1 {
@@ -33,7 +33,7 @@ body {
 
 .area {
     background: white;
-    background: linear-gradient(to top, #E5D0E3, white);
+    background: linear-gradient(to top, #7ac4de, white);
     width: 100%;
     height: 100vh;
 }
