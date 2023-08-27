@@ -8,8 +8,8 @@ body {
 }
 
 .footer {
-    bottom: 10%;
     position: absolute;
+    bottom: 10vh;
     left: 50%;
     transform: translate(-50%, -50%);
 }
@@ -20,9 +20,9 @@ body {
 }
 
 .context {
-    width: 100%;
     position: absolute;
     top: 37vh;
+    width: 100%;
 }
 
 .context h1 {
@@ -32,10 +32,14 @@ body {
 }
 
 .area {
-    background: white;
-    background: linear-gradient(to top, #7ac4de, white);
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100vh;
+    z-index: -1;
+    background: white;
+    background: linear-gradient(to top, #7ac4de, white);
 }
 
 .circles {
