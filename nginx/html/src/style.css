@@ -9,7 +9,7 @@ body {
 
 .footer {
     position: absolute;
-    bottom: 50px;
+    bottom: 8vh;
     left: 50%;
     transform: translate(-50%, -50%);
 }
