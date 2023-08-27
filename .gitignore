@@ -1,1 +1,14 @@
-/.idea
+# Exclude everything
+*
+
+# Re-include specific directories
+!nginx/
+!v2ray/
+!wordpress/
+!workspace/
+
+# Re-include top-level files
+!.gitignore
+!*.md
+!*.sh
+!*.Dockerfile
