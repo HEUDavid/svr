@@ -10,13 +10,13 @@ body {
 .footer {
     position: absolute;
     bottom: 8vh;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    width: 100%;
+    text-align: center;
 }
 
 .footer a {
     color: #5c5959;
-    font-size: 38px;
+    font-size: 30px;
     text-decoration: none;
 }
 
