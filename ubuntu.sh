@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # 系统更新
-yum update -y
+apt update -y
 
 # 安装必备工具
-yum install curl git vim lrzsz -y
+apt install -y curl git vim lrzsz
 
 # 下载初始化脚本
 git clone https://github.com/HEUDavid/svr.git
