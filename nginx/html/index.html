@@ -34,54 +34,7 @@
     <h2>Backtesting</h2>
     <ul class='list' id="fileList"></ul>
 </div>
-
-
-<script>
-    // 获取文件列表元素
-    var fileListElement = document.getElementById('fileList');
-
-    // 发起异步请求获取数据
-    fetch('/data/')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
-        .then(files => {
-            // 处理返回的文件列表数据
-            files.forEach(file => {
-                // 创建 li 元素
-                var li = document.createElement('li');
-
-                // 创建 span 元素并添加到 li 中
-                var span = document.createElement('span');
-                span.className = 'circle';
-                li.appendChild(span);
-
-                // 创建 a 元素并设置属性
-                var link = document.createElement('a');
-                link.target = '_blank';
-                link.href = '/data/' + file.name;
-
-                // 设置 a 元素的文本内容
-                var date = new Date(file.mtime);
-                link.textContent = date.toLocaleString() + ' ' + file.name;
-
-                // 将 a 元素添加到 li 中
-                li.appendChild(link);
-
-                // 将 li 元素添加到文件列表元素中
-                fileListElement.appendChild(li);
-            });
-        })
-        .catch(error => {
-            // 处理错误
-            console.error('Fetch error:', error);
-        });
-
-</script>
-
+<script async src="src/script.js"></script>
 
 </body>
 </html>
