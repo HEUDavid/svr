@@ -52,6 +52,13 @@
 
                 var date = new Date(file.mtime);
                 var textNode = document.createTextNode(file.name + ' ' + date.toLocaleString());
+
+                var link = document.createElement('a');
+                link.href = '/data/' + file.name;
+                link.target = '_blank';
+
+                textNode.appendChild(link);
+
                 li.appendChild(textNode);
 
                 fileListElement.appendChild(li);
