@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="src/style.css">
 </head>
 <body>
-<!--background-->
 <div class="area">
     <ul class="circles">
         <li></li>
@@ -21,9 +20,6 @@
         <li></li>
     </ul>
 </div>
-<div class="context">
-    <h1>Hello from mDavid.cn</h1>
-</div>
 
 
 <div class="footer">
@@ -32,8 +28,14 @@
     <a href="https://beian.miit.gov.cn" target="_blank">苏ICP备17021154号-1</a>
 </div>
 
-<strong>Back Test</strong>
-<ol class="alternating-colors" id="fileList"></ol>
+
+<div class='list-container'>
+    <h1>mdavid.cn</h1>
+    <h2>Backtesting</h2>
+    <ul class='list' id="fileList"></ul>
+</div>
+
+
 <script>
     var fileListElement = document.getElementById('fileList');
     var xhr = new XMLHttpRequest();
@@ -42,30 +44,26 @@
         if (xhr.readyState === 4 && xhr.status === 200) {
             var files = JSON.parse(xhr.responseText);
             files.forEach(function (file) {
-                var listItem = document.createElement('li');
+                var li = document.createElement('li');
 
                 var link = document.createElement('a');
-                link.href = '/data/' + file.name;
                 link.target = '_blank';
+                link.href = '/data/' + file.name;
 
-                var strong = document.createElement('strong');
-                strong.textContent = file.name;
+                var span = document.createElement('span');
+                span.className = 'circle';
+                link.appendChild(span);
 
-                var p = document.createElement('p');
-                var date = new Date(file.mtime);
-                p.textContent = date.toLocaleString();
+                var date = new Date(file.time);
+                link.textContent = file.name + ' ' + date.toLocaleString();
 
-                link.appendChild(strong);
-                link.appendChild(p);
-
-                listItem.appendChild(link);
-                fileListElement.appendChild(listItem);
+                li.appendChild(link);
+                fileListElement.appendChild(li);
             });
         }
     };
     xhr.send();
 </script>
-
 
 </body>
 </html>
