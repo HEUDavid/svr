@@ -36,7 +36,6 @@ body {
     font-size: 24pt;
 }
 
-
 .list {
     list-style: none;
     padding: 0;
@@ -76,14 +75,9 @@ body {
     vertical-align: middle;
 }
 
-
 .list li a {
     text-decoration: none;
     color: inherit;
-}
-
-.list li a:hover {
-    /*color: inherit;*/
 }
 
 
