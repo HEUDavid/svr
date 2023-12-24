@@ -53,7 +53,7 @@
 
                 var p = document.createElement('p');
                 var date = new Date(file.mtime);
-                p.textContent = `${file.name} ${date.toLocaleString()}`;
+                p.textContent = date.toLocaleString();
 
                 link.appendChild(strong);
                 link.appendChild(p);
