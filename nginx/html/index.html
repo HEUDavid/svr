@@ -46,18 +46,13 @@
             files.forEach(function (file) {
                 var li = document.createElement('li');
 
-                var link = document.createElement('a');
-                link.target = '_blank';
-                link.href = '/data/' + file.name;
-
                 var span = document.createElement('span');
                 span.className = 'circle';
-                link.appendChild(span);
+                li.appendChild(span);
 
                 var date = new Date(file.mtime);
-                link.textContent = file.name + ' ' + date.toLocaleString();
+                li.textContent = file.name + ' ' + date.toLocaleString();
 
-                li.appendChild(link);
                 fileListElement.appendChild(li);
             });
         }
