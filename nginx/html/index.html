@@ -43,13 +43,20 @@
             var files = JSON.parse(xhr.responseText);
             files.forEach(function (file) {
                 var listItem = document.createElement('li');
-                var link = document.createElement('a');
 
+                var link = document.createElement('a');
                 link.href = '/data/' + file.name;
                 link.target = '_blank';
 
+                var strong = document.createElement('strong');
+                strong.textContent = file.name;
+
+                var p = document.createElement('p');
                 var date = new Date(file.mtime);
-                link.textContent = `${file.name} ${date.toLocaleString()}`;
+                p.textContent = `${file.name} ${date.toLocaleString()}`;
+
+                link.appendChild(strong);
+                link.appendChild(p);
 
                 listItem.appendChild(link);
                 fileListElement.appendChild(listItem);
