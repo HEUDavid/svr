@@ -50,16 +50,13 @@
                 span.className = 'circle';
                 li.appendChild(span);
 
-                var date = new Date(file.mtime);
-                var textNode = document.createTextNode(file.name + ' ' + date.toLocaleString());
-
                 var link = document.createElement('a');
-                link.href = '/data/' + file.name;
                 link.target = '_blank';
+                link.href = '/data/' + file.name;
 
-                textNode.appendChild(link);
-
-                li.appendChild(textNode);
+                var date = new Date(file.mtime);
+                link.textContent = file.name + ' ' + date.toLocaleString();
+                li.appendChild(link);
 
                 fileListElement.appendChild(li);
             });
