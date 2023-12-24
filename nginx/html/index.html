@@ -51,7 +51,8 @@
                 li.appendChild(span);
 
                 var date = new Date(file.mtime);
-                li.textContent = file.name + ' ' + date.toLocaleString();
+                var textNode = document.createTextNode(file.name + ' ' + date.toLocaleString());
+                li.appendChild(textNode);
 
                 fileListElement.appendChild(li);
             });
