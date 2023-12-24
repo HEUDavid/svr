@@ -1,11 +1,9 @@
-// script.js
-
 document.addEventListener('DOMContentLoaded', () => {
     async function fetchData() {
         try {
             const response = await fetch('/data');
             if (!response.ok) {
-                throw new Error('Failed to fetch data');
+                throw new Error(`Failed to fetch data. Status: ${response.status}`);
             }
             const files = await response.json();
             handleFileList(files);
