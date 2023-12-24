@@ -55,7 +55,7 @@
                 link.href = '/data/' + file.name;
 
                 var date = new Date(file.mtime);
-                link.textContent = date.toLocaleString() + ': ' + file.name;
+                link.textContent = date.toLocaleString() + ' ' + file.name;
                 li.appendChild(link);
 
                 fileListElement.appendChild(li);
