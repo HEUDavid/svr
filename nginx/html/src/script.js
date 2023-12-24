@@ -1,5 +1,11 @@
 // script.js
 
+// 这是一个简单的JavaScript脚本，用于在页面加载时显示弹窗
+window.onload = function () {
+    // 提示框显示消息
+    alert('欢迎使用JavaScript脚本！');
+};
+
 document.addEventListener('DOMContentLoaded', () => {
     async function fetchData() {
         try {
