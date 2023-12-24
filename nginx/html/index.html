@@ -41,14 +41,18 @@
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
             var files = JSON.parse(xhr.responseText);
-
             files.forEach(function (file) {
                 var listItem = document.createElement('li');
+                var link = document.createElement('a');
+
+                link.href = '/path/to/' + file.name;
+
                 var date = new Date(file.mtime);
-                listItem.textContent = file.name + date.toLocaleString();
+                link.textContent = `${file.name} ${date.toLocaleString()}`;
+
+                listItem.appendChild(link);
                 fileListElement.appendChild(listItem);
             });
-
         }
     };
     xhr.send();
