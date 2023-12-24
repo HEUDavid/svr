@@ -76,6 +76,18 @@ body {
     vertical-align: middle;
 }
 
+
+.list li a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.list li a:hover {
+    text-decoration: underline;
+    color: #fff;
+}
+
+
 .footer {
     position: absolute;
     bottom: 8vh;
