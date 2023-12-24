@@ -54,7 +54,7 @@
                 span.className = 'circle';
                 link.appendChild(span);
 
-                var date = new Date(file.time);
+                var date = new Date(file.mtime);
                 link.textContent = file.name + ' ' + date.toLocaleString();
 
                 li.appendChild(link);
