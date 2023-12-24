@@ -38,5 +38,5 @@ function handleFileList(files) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    fetchData().then(() => console.log('Data fetched'));
+    fetchData();
 });
