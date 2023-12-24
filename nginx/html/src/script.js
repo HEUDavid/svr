@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     async function fetchData() {
         try {
-            const response = await fetch('/data');
+            const response = await fetch('/data/');
             if (!response.ok) {
                 throw new Error(`Failed to fetch data. Status: ${response.status}`);
             }
