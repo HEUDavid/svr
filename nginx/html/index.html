@@ -46,6 +46,7 @@
                 var link = document.createElement('a');
 
                 link.href = '/data/' + file.name;
+                link.target = '_blank';
 
                 var date = new Date(file.mtime);
                 link.textContent = `${file.name} ${date.toLocaleString()}`;
