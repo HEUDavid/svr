@@ -24,6 +24,35 @@
 <div class="context">
     <h1>Hello from mDavid.cn</h1>
 </div>
+
+
+<h1>File List</h1>
+
+<ul id="fileList"></ul>
+
+<script>
+    // 使用JavaScript动态加载文件列表
+    var fileListElement = document.getElementById('fileList');
+
+    // 发送请求获取文件列表
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', '/data/', true);
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            var files = JSON.parse(xhr.responseText);
+
+            // 将文件列表添加到页面
+            files.forEach(function (file) {
+                var listItem = document.createElement('li');
+                listItem.textContent = file;
+                fileListElement.appendChild(listItem);
+            });
+        }
+    };
+    xhr.send();
+</script>
+
+
 <div class="footer">
     <a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=23010302000239"
        target="_blank">黑公网安备 23010302000239号</a>
