@@ -45,7 +45,7 @@ body {
 }
 
 .list li {
-    padding: 3px 15px;
+    padding: 0 15px;
     border-radius: 4px;
     font-size: 16pt;
     font-weight: 300;
@@ -73,7 +73,7 @@ body {
 
 .list li .circle::before {
     content: "•";
-    font-size: 28pt;
+    font-size: 16pt;
     vertical-align: middle;
 }
 
