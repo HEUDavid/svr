@@ -12,7 +12,7 @@ body {
     width: 60%;
     background: rgba(255, 255, 255, 0.5);
     position: absolute;
-    top: 45%;
+    top: 46%;
     left: 50%;
     transform: translate(-50%, -50%);
     padding: 10px;
@@ -40,7 +40,7 @@ body {
     list-style: none;
     padding: 0;
     margin: 10px 0 0;
-    max-height: 55vh;
+    max-height: 54vh;
     overflow-y: auto;
 }
 
@@ -85,7 +85,7 @@ body {
 
 .footer {
     position: absolute;
-    bottom: 8vh;
+    bottom: 5vh;
     width: 100%;
     text-align: center;
 }
