@@ -5,9 +5,9 @@ local lfs = require("lfs")
 
 local main = {}
 
-function main.get_pages(directory)
+function main.get_pages()
     local data = {}
-    for file in lfs.dir(directory) do
+    for file in lfs.dir("/data") do
         if file ~= "." and file ~= ".." then
             local path = directory .. "/" .. file
             local attr = lfs.attributes(path)
@@ -29,7 +29,7 @@ local uri = ngx.var.uri
 
 if uri == "/api" then
     ngx.header.content_type = "application/json"
-    ngx.say(main.get_pages("/data"))
+    ngx.say(main.get_pages())
 
 elseif uri == "/api/hello" then
     ngx.header.content_type = "text/plain"
