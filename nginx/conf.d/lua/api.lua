@@ -23,7 +23,7 @@ local function say_hello()
     return "hello from mdavid.cn"
 end
 
-local function dispatcher()
+function dispatcher()
     local uri = ngx.var.uri
 
     if uri == "/api" then
