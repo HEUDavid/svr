@@ -1,23 +1,26 @@
--- main.lua
-
 local cjson = require("cjson")
 local lfs = require("lfs")
 
-main = {}
+local main = {}
 
-function main.get_pages()
-    local data = {}
-    local directory = "/data"
-    for file in lfs.dir(directory) do
+function main.get_files(path)
+    local files = {}
+
+    for file in lfs.dir(path) do
         if file ~= "." and file ~= ".." then
-            local path = directory .. "/" .. file
-            local attr = lfs.attributes(path)
-            if attr and attr.mode == "file" then
-                table.insert(data, { name = file, mtime = attr.modification })
-            end
+            local attr = lfs.attributes(path .. file)
+            table.insert(files, {
+                name = file,
+                size = attr.size,
+                mtime = attr.modification
+            })
         end
     end
-    return cjson.encode(data)
+    return cjson.encode(files)
 end
 
-print(main.get_pages())
+function main.say_hello()
+    return "hello from mdavid.cn"
+end
+
+return main
