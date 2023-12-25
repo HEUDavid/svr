@@ -2,7 +2,7 @@
 
 path=/root/svr
 
-echo "plz create database for wordpress, if database is ready, plz input yes..."
+echo "create db for wordpress, if ready, input yes..."
 read db_ok
 echo "db is ready? ${db_ok}"
 
@@ -18,6 +18,6 @@ function get_themes() {
 }
 get_themes
 
-echo "plz update wordpress config, if wordpress config is ready, plz input yes..."
+echo "update wordpress config, if ready, input yes..."
 read config_ok
 echo "config is ready? ${config_ok}"
