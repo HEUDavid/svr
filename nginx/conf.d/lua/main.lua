@@ -5,8 +5,9 @@ local lfs = require("lfs")
 
 main = {}
 
-function main.get_pages(directory)
+function main.get_pages()
     local data = {}
+    local directory = "/data"
     for file in lfs.dir(directory) do
         if file ~= "." and file ~= ".." then
             local path = directory .. "/" .. file
@@ -19,8 +20,4 @@ function main.get_pages(directory)
     return cjson.encode(data)
 end
 
-function main.say_hello()
-    return "hello from mdavid.cn"
-end
-
-return main
+print(main.get_pages())
