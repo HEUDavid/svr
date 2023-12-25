@@ -37,7 +37,7 @@
     document.addEventListener('DOMContentLoaded', () => {
         async function fetchData() {
             try {
-                const response = await fetch('/data/');
+                const response = await fetch('/api/get_files');
                 if (!response.ok) {
                     throw new Error(`Failed to fetch data. Status: ${response.status}`);
                 }
