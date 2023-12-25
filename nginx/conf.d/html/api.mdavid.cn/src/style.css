@@ -124,12 +124,12 @@ body {
     }
 
     .list {
-        max-height: 55vh;
-        min-height: 55vh;
+        max-height: 54vh;
+        min-height: 54vh;
     }
 
     .list li {
-        font-size: 8pt;
+        font-size: 10pt;
     }
 
     .list li .circle::before {
