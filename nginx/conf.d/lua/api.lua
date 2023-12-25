@@ -14,7 +14,7 @@ local function say_hello()
     return "hello from mdavid.cn"
 end
 
-local main = require("main")
+local main = require("lua.main")
 
 
 -- dispatcher
