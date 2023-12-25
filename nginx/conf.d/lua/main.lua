@@ -3,7 +3,8 @@
 local cjson = require("cjson")
 local lfs = require("lfs")
 
-local main = {}
+main = {}
+
 function main.get_pages(directory)
     local data = {}
     for file in lfs.dir(directory) do
