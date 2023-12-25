@@ -3,7 +3,7 @@
 local cjson = require("cjson")
 local lfs = require("lfs")
 
-function get_pages(directory)
+local function get_pages(directory)
     local data = {}
     for file in lfs.dir(directory) do
         if file ~= "." and file ~= ".." then
@@ -17,7 +17,7 @@ function get_pages(directory)
     return cjson.encode(data)
 end
 
-function say_hello()
+local function say_hello()
     return "hello from mdavid.cn"
 end
 
