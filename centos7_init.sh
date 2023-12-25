@@ -8,6 +8,7 @@ yum install curl git vim lrzsz -y
 
 # 下载初始化脚本
 git clone https://github.com/HEUDavid/svr.git
+
 path=/root/svr
 
 # 需要启动的服务项
@@ -29,6 +30,7 @@ read uuid
 
 printf "证书文件如下：\n"
 ls ${path}/nginx/conf.d/ssl
+
 echo "passwd: ${passwd}"
 echo "uuid: ${uuid}"
 echo "containers: ${containers[@]}"
