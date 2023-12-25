@@ -129,11 +129,15 @@ body {
     }
 
     .list li {
-        font-size: 10pt;
+        font-size: 11pt;
+    }
+
+    .list li .circle {
+        margin-right: 5px;
     }
 
     .list li .circle::before {
-        font-size: 16pt;
+        font-size: 18pt;
     }
 
     .footer {
