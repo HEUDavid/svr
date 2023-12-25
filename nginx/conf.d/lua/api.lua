@@ -14,6 +14,8 @@ local function say_hello()
     return "hello from mdavid.cn"
 end
 
+local main = require("main")
+
 -- dispatcher
 local uri = ngx.var.uri
 
@@ -23,7 +25,7 @@ if uri == "/api" then
 
 elseif uri == "/api/hello" then
     ngx.header.content_type = "text/plain"
-    ngx.say(say_hello())
+    ngx.say(main.say_hello())
 
 else
     ngx.exit(ngx.HTTP_NOT_FOUND)
