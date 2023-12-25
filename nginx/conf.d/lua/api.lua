@@ -29,12 +29,13 @@ end
 local uri = ngx.var.uri
 
 if uri == "/api" then
-    ngx.header.content_type = "application/json"
-    ngx.say(M.get_files("/data/"))
-
-elseif uri == "/api/hello" then
     ngx.header.content_type = "text/plain"
     ngx.say(M.say_hello())
+
+
+elseif uri == "/api/get_files" then
+    ngx.header.content_type = "application/json"
+    ngx.say(M.get_files("/data/"))
 
 else
     ngx.exit(ngx.HTTP_NOT_FOUND)
