@@ -3,7 +3,9 @@
 local cjson = require("cjson")
 local lfs = require("lfs")
 
-local function get_pages(directory)
+local api = {}
+
+function api.get_pages(directory)
     local data = {}
     for file in lfs.dir(directory) do
         if file ~= "." and file ~= ".." then
@@ -15,28 +17,14 @@ local function get_pages(directory)
             end
         end
     end
-
     return cjson.encode(data)
 end
 
-local function say_hello()
+function api.say_hello()
     return "hello from mdavid.cn"
 end
 
-function dispatcher()
-    local uri = ngx.var.uri
+--print(api.say_hello())
+--print(api.get_pages("./"))
 
-    if uri == "/api" then
-        ngx.header.content_type = "application/json"
-        ngx.say(get_pages())
-
-    elseif uri == "/api/hello" then
-        ngx.header.content_type = "text/plain"
-        ngx.say(say_hello())
-
-    else
-        ngx.exit(ngx.HTTP_NOT_FOUND)
-    end
-end
-
-dispatcher()
+return api
