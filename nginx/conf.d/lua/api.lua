@@ -1,21 +1,14 @@
 -- api.lua
 
 local cjson = require("cjson")
-local lfs = require("lfs")
 
 local main = {}
 
 function main.get_pages()
-    local data = {}
-    for file in lfs.dir("/data") do
-        if file ~= "." and file ~= ".." then
-            local path = directory .. "/" .. file
-            local attr = lfs.attributes(path)
-            if attr and attr.mode == "file" then
-                table.insert(data, { name = file, mtime = attr.modification })
-            end
-        end
-    end
+    local data = {
+        message = "hello, 1",
+        timestamp = os.time()
+    }
     return cjson.encode(data)
 end
 
