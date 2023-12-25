@@ -59,7 +59,7 @@
             link.target = '_blank';
             link.href = `/data/${file.name}`;
 
-            const date = new Date(file.mtime);
+            const date = new Date(file.mtime * 1000);
             link.textContent = `${date.toLocaleString()}  ${file.name}`;
 
             li.appendChild(link);
