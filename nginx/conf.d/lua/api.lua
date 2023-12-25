@@ -1,6 +1,6 @@
 -- api.lua
 
-local main = require(".main")
+local main = require("main")
 
 
 -- dispatcher
