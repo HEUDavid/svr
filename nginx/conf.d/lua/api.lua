@@ -1,12 +1,21 @@
 -- api.lua
 
 local cjson = require("cjson")
+local lfs = require("lfs")
 
-local function get_pages()
-    local data = {
-        message = "hello, 1",
-        timestamp = os.time()
-    }
+local function get_pages(directory)
+    local data = {}
+    for file in lfs.dir(directory) do
+        if file ~= "." and file ~= ".." then
+            local path = directory .. "/" .. file
+            local attr = lfs.attributes(path)
+
+            if attr and attr.mode == "file" then
+                table.insert(data, { name = file, mtime = attr.modification })
+            end
+        end
+    end
+
     return cjson.encode(data)
 end
 
@@ -14,17 +23,20 @@ local function say_hello()
     return "hello from mdavid.cn"
 end
 
--- dispatcher
-local uri = ngx.var.uri
+local function dispatcher()
+    local uri = ngx.var.uri
 
-if uri == "/api" then
-    ngx.header.content_type = "application/json"
-    ngx.say(get_pages())
+    if uri == "/api" then
+        ngx.header.content_type = "application/json"
+        ngx.say(get_pages())
 
-elseif uri == "/api/hello" then
-    ngx.header.content_type = "text/plain"
-    ngx.say(say_hello())
+    elseif uri == "/api/hello" then
+        ngx.header.content_type = "text/plain"
+        ngx.say(say_hello())
 
-else
-    ngx.exit(ngx.HTTP_NOT_FOUND)
+    else
+        ngx.exit(ngx.HTTP_NOT_FOUND)
+    end
 end
+
+dispatcher()
