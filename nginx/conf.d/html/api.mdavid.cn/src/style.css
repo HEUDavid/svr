@@ -83,7 +83,6 @@ body {
     color: inherit;
 }
 
-
 .footer {
     bottom: 5vh;
     font-size: 20px;
@@ -145,15 +144,10 @@ body {
         font-size: 10px;
     }
 
-    .context {
-        top: 40vh;
-    }
-
     .context h1 {
         font-size: 30px;
     }
 }
-
 
 .area {
     position: absolute;
