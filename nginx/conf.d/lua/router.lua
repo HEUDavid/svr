@@ -6,7 +6,7 @@ local uri = ngx.var.uri
 
 if uri == "/api" then
     ngx.header.content_type = "application/json"
-    ngx.say(api.get_pages())
+    ngx.say(api.get_pages("/data"))
 
 elseif uri == "/api/hello" then
     ngx.header.content_type = "text/plain"
