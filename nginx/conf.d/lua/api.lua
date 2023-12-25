@@ -8,12 +8,14 @@ local M = {}
 function M.get_files(path)
     local files = {}
     for file in lfs.dir(path) do
-        if file ~= "." and file ~= ".." then
-            local attr = lfs.attributes(path .. file)
+        local full_path = path .. file
+        local attr = lfs.attributes(full_path)
+        if attr.mode == "file" then
             table.insert(files, {
                 name = file,
                 size = attr.size,
-                mtime = attr.modification
+                mtime = attr.modification,
+                type = attr.mode
             })
         end
     end
@@ -21,7 +23,7 @@ function M.get_files(path)
 end
 
 function M.say_hello()
-    return "hello from api.mdavid.cn"
+    return "hello from mdavid.cn"
 end
 
 
