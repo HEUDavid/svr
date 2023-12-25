@@ -69,7 +69,7 @@ fi
 if [[ "${containers[@]}" =~ "v2ray" ]]; then
     printf "启动V2Ray容器...\n"
     sed -i "s/uuid_for_update/${uuid}/g" "${path}/v2ray/config.json"
-    docker run -d -p 10086:10086 --name v2ray --restart=always -v "${path}/v2ray/config.json:/etc/v2fly/config.json" -v "${path}/v2ray/log:/var/log/v2ray" v2fly/v2fly-core run -c /etc/v2fly/config.json
+    docker run -d -p 10086:10086 --name v2ray --restart=always -v "${path}/v2ray/config.json:/etc/v2fly/config.json" v2fly/v2fly-core run -c /etc/v2fly/config.json
 fi
 
 if [[ "${containers[@]}" =~ "python" ]]; then
