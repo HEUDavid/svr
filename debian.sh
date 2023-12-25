@@ -58,7 +58,7 @@ systemctl start docker
 
 if [[ "${containers[@]}" =~ "nginx" ]]; then
     printf "启动Nginx容器...\n"
-    docker run -itd --name nginx --restart=always -p 80:80 -p 443:443 -v "${path}/nginx/conf.d:/etc/nginx/conf.d" -v "${path}/nginx/log:/var/log/nginx" -v "${path}/nginx/html:/usr/share/nginx/html" nginx
+    docker run -itd --name nginx --restart=always -p 80:80 -p 443:443 -v "${path}/nginx/conf.d:/etc/nginx/conf.d" -v "${path}/nginx/log:/var/log/nginx" nginx
 fi
 
 if [[ "${containers[@]}" =~ "mysql" ]]; then
