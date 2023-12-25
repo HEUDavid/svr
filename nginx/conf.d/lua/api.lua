@@ -2,7 +2,7 @@
 
 local cjson = require("cjson")
 
-local function generate_json_response()
+local function get_pages()
     local data = {
         message = "hello, 1",
         timestamp = os.time()
@@ -10,16 +10,8 @@ local function generate_json_response()
     return cjson.encode(data)
 end
 
-local function generate_another_json_response()
-    local data = {
-        message = "hello, 2",
-        timestamp = os.time()
-    }
-    return cjson.encode(data)
-end
-
-local function generate_hello_response()
-    return "hello, 3"
+local function say_hello()
+    return "hello from mdavid.cn"
 end
 
 -- dispatcher
@@ -27,13 +19,12 @@ local uri = ngx.var.uri
 
 if uri == "/api" then
     ngx.header.content_type = "application/json"
-    ngx.say(generate_json_response())
-elseif uri == "/aaa" then
-    ngx.header.content_type = "application/json"
-    ngx.say(generate_another_json_response())
-elseif uri == "/bbb" then
+    ngx.say(get_pages())
+
+elseif uri == "/api/hello" then
     ngx.header.content_type = "text/plain"
-    ngx.say(generate_hello_response())
+    ngx.say(say_hello())
+
 else
     ngx.exit(ngx.HTTP_NOT_FOUND)
 end
