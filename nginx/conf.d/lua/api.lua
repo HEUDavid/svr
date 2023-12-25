@@ -11,7 +11,6 @@ function api.get_pages(directory)
         if file ~= "." and file ~= ".." then
             local path = directory .. "/" .. file
             local attr = lfs.attributes(path)
-
             if attr and attr.mode == "file" then
                 table.insert(data, { name = file, mtime = attr.modification })
             end
