@@ -9,48 +9,46 @@ body {
     font-family: serif;
 }
 
-
 .list-container {
     width: 60%;
+    top: 46%;
     background: rgba(255, 255, 255, 0.4);
     position: absolute;
-    top: 46%;
     left: 50%;
     transform: translate(-50%, -50%);
     padding: 10px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
     border-radius: 4px;
+    color: #494277;
 }
 
 .list-container h1 {
-    color: #494277;
+    font-size: 34pt;
     text-align: center;
     font-weight: 500;
-    font-size: 34pt;
     margin: 15px 0;
 }
 
 .list-container h2 {
-    color: #494277;
+    font-size: 20pt;
     text-align: left;
     font-weight: 400;
     padding-left: 15px;
-    font-size: 20pt;
 }
 
 .list {
+    max-height: 54vh;
+    min-height: 30vh;
     list-style: none;
     padding: 0;
     margin: 10px 0 0;
-    max-height: 54vh;
-    min-height: 30vh;
     overflow-y: auto;
 }
 
 .list li {
+    font-size: 15pt;
     padding: 2px 15px;
     border-radius: 4px;
-    font-size: 15pt;
     font-weight: 300;
     display: flex;
     align-items: center;
@@ -75,8 +73,8 @@ body {
 }
 
 .list li .circle::before {
-    content: "•";
     font-size: 24pt;
+    content: "•";
     vertical-align: middle;
 }
 
@@ -87,44 +85,60 @@ body {
 
 
 .footer {
-    position: absolute;
     bottom: 5vh;
+    font-size: 20px;
+    position: absolute;
     width: 100%;
     text-align: center;
 }
 
 .footer a {
     color: #5c5959;
-    font-size: 20px;
     text-decoration: none;
 }
 
 .context {
-    position: absolute;
     top: 37vh;
+    position: absolute;
     width: 100%;
+    text-align: center;
 }
 
 .context h1 {
-    text-align: center;
-    color: black;
     font-size: 65px;
+    color: black;
 }
 
 @media only screen and (max-width: 600px) {
-    /* 移动端适配 */
     .list-container {
-        width: 83%;
-        top: 46%;
+        width: 84%;
+        top: 48%;
+    }
+
+    .list-container h1 {
+        font-size: 24pt;
+    }
+
+    .list-container h2 {
+        font-size: 16pt;
     }
 
     .list {
-        max-height: 50vh;
-        min-height: 50vh;
+        max-height: 55vh;
+        min-height: 55vh;
     }
 
-    .footer a {
-        font-size: 15px;
+    .list li {
+        font-size: 12pt;
+    }
+
+    .list li .circle::before {
+        font-size: 16pt;
+    }
+
+    .footer {
+        bottom: 3vh;
+        font-size: 10px;
     }
 }
 
