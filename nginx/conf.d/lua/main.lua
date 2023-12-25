@@ -1,7 +1,7 @@
 local cjson = require("cjson")
 local lfs = require("lfs")
 
-main = {}
+local main = {}
 
 function main.get_files(path)
     local files = {}

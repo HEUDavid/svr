@@ -1,6 +1,7 @@
 -- api.lua
 
-local main = require("lua.main")
+local main = require(".main")
+
 
 -- dispatcher
 local uri = ngx.var.uri
