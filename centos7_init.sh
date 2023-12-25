@@ -58,7 +58,6 @@ systemctl start docker
 
 if [[ "${containers[@]}" =~ "nginx" ]]; then
     printf "启动Nginx容器...\n"
-    docker run -itd --name nginx --restart=always -p 80:80 -p 443:443 -v "${path}/nginx/conf.d:/etc/nginx/conf.d" nginx
     docker run -itd --name nginx --restart=always -p 80:80 -p 443:443 -v "${path}/nginx/conf.d:/etc/nginx/conf.d" -v "${path}/workspace/data:/data" nginx
 fi
 
