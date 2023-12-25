@@ -98,6 +98,18 @@ body {
     text-decoration: none;
 }
 
+.context {
+    position: absolute;
+    top: 37vh;
+    width: 100%;
+}
+
+.context h1 {
+    text-align: center;
+    color: black;
+    font-size: 65px;
+}
+
 
 .area {
     position: absolute;
