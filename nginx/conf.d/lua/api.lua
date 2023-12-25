@@ -10,6 +10,9 @@ function M.get_files(path)
     for file in lfs.dir(path) do
         if file ~= "." and file ~= ".." then
             local attr = lfs.attributes(path .. file)
+            if attr.mode ~= "file" then
+                goto continue
+            end
             table.insert(files, {
                 name = file,
                 size = attr.size,
@@ -21,7 +24,7 @@ function M.get_files(path)
 end
 
 function M.say_hello()
-    return "hello from mdavid.cn"
+    return "hello from api.mdavid.cn"
 end
 
 
