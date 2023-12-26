@@ -46,7 +46,7 @@ body {
 }
 
 .list li {
-    font-size: 14pt;
+    font-size: 18pt;
     font-family: monospace;
     padding: 2px 15px;
     border-radius: 4px;
@@ -68,13 +68,12 @@ body {
 }
 
 .list li .circle {
-    margin-right: 8px;
+    margin-right: 6px;
     align-self: center;
     color: #6ecc8b;
 }
 
 .list li .circle::before {
-    font-size: 22pt;
     content: "•";
     vertical-align: middle;
 }
