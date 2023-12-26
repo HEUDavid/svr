@@ -72,8 +72,6 @@
             const formattedDate = new Intl.DateTimeFormat('zh-CN', options).format(date);
             link.textContent = `${formattedDate} ${file.name}`;
 
-            link.textContent = `${date.toLocaleString()} ${file.name}`;
-
             li.appendChild(link);
             return li;
         }
