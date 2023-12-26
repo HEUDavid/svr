@@ -106,7 +106,7 @@ body {
 }
 
 .context h1 {
-    font-size: 53px;
+    font-size: 50px;
     color: black;
 }
 
@@ -141,10 +141,6 @@ body {
 
     .list li a {
         font-size: 0.82em;
-    }
-
-    .footer {
-        bottom: 4vh;
     }
 
     .context h1 {
