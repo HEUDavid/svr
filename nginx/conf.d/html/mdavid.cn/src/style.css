@@ -68,9 +68,9 @@ body {
 
 .list li .circle {
     margin-right: 6px;
+    font-size: 0.90em;
     align-self: center;
     color: #6ecc8b;
-    font-size: 0.90em;
 }
 
 .list li .circle::before {
@@ -79,9 +79,9 @@ body {
 }
 
 .list li a {
+    font-size: 0.82em;
     text-decoration: none;
     color: inherit;
-    font-size: 0.82em;
 }
 
 .footer {
@@ -135,6 +135,11 @@ body {
 
     .list li .circle {
         margin-right: 2px;
+        font-size: 0.85em;
+    }
+
+    .list li a {
+        font-size: 0.85em;
     }
 
     .footer {
