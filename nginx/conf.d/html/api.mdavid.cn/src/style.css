@@ -110,7 +110,7 @@ body {
 
 @media only screen and (max-width: 600px) {
     .list-container {
-        width: 84%;
+        width: 86%;
         top: 48%;
     }
 
@@ -133,10 +133,6 @@ body {
 
     .list li .circle {
         margin-right: 4px;
-    }
-
-    .list li .circle::before {
-        font-size: 18pt;
     }
 
     .footer {
