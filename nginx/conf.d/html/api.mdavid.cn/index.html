@@ -61,15 +61,15 @@
             link.href = `/data/${file.name}`;
 
             const date = new Date(file.mtime * 1000);
-            const options = {
+            const formattedDate = new Intl.DateTimeFormat(undefined, {
                 year: 'numeric',
                 month: '2-digit',
                 day: '2-digit',
                 hour: '2-digit',
                 minute: '2-digit',
+                second: '2-digit',
                 hour12: false,
-            };
-            const formattedDate = new Intl.DateTimeFormat('zh-CN', options).format(date);
+            }).format(date);
             link.textContent = `${formattedDate} ${file.name}`;
 
             li.appendChild(link);
