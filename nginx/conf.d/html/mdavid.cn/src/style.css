@@ -46,7 +46,8 @@ body {
 }
 
 .list li {
-    font-size: 15pt;
+    font-size: 14pt;
+    font-family: monospace;
     padding: 2px 15px;
     border-radius: 4px;
     font-weight: 300;
@@ -67,13 +68,13 @@ body {
 }
 
 .list li .circle {
-    margin-right: 10px;
+    margin-right: 8px;
     align-self: center;
     color: #6ecc8b;
 }
 
 .list li .circle::before {
-    font-size: 24pt;
+    font-size: 22pt;
     content: "•";
     vertical-align: middle;
 }
@@ -132,11 +133,11 @@ body {
     }
 
     .list li .circle {
-        margin-right: 5px;
+        margin-right: 4px;
     }
 
     .list li .circle::before {
-        font-size: 20pt;
+        font-size: 18pt;
     }
 
     .footer {
