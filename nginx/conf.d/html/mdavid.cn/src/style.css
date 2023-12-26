@@ -37,7 +37,7 @@ body {
 
 .list {
     max-height: 54vh;
-    min-height: 30vh;
+    min-height: 28vh;
     list-style: none;
     padding: 0;
     margin: 10px 0 0;
@@ -85,7 +85,7 @@ body {
 }
 
 .footer {
-    bottom: 4.2vh;
+    bottom: 4.1vh;
     font-size: 14px;
     position: absolute;
     width: 100%;
