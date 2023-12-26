@@ -37,7 +37,7 @@ body {
 
 .list {
     max-height: 54vh;
-    min-height: 30vh;
+    min-height: 28vh;
     list-style: none;
     padding: 0;
     margin: 10px 0 0;
@@ -125,8 +125,8 @@ body {
     }
 
     .list {
-        max-height: 45vh;
-        min-height: 45vh;
+        max-height: 54vh;
+        min-height: 54vh;
     }
 
     .list li {
