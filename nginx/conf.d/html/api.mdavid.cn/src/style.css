@@ -130,13 +130,12 @@ body {
     }
 
     .list li {
-        font-size: 11px;
+        font-size: 15px;
         padding: 0 0 0 12px;
     }
 
     .list li .circle {
         margin-right: 2px;
-        /*font-size: 18px;*/
     }
 
     .footer {
