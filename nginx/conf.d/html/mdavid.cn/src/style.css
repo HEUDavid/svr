@@ -87,7 +87,7 @@ body {
 
 .footer {
     bottom: 5vh;
-    font-size: 0.75rem;
+    font-size: 0.78rem;
     position: absolute;
     width: 100%;
     text-align: center;
@@ -106,7 +106,7 @@ body {
 }
 
 .context h1 {
-    font-size: 65px;
+    font-size: 60px;
     color: black;
 }
 
