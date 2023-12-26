@@ -86,13 +86,14 @@ body {
 
 .footer {
     bottom: 5vh;
-    font-size: 0.8rem;
+    font-size: 16px;
     position: absolute;
     width: 100%;
     text-align: center;
 }
 
 .footer a {
+    font-size: 0.8em;
     color: #5c5959;
     text-decoration: none;
 }
