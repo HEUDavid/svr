@@ -105,8 +105,7 @@ body {
 }
 
 .context h1 {
-    font-size: 52px;
-    /*font-family: fantasy, serif;*/
+    font-size: 54px;
     color: black;
 }
 
@@ -140,11 +139,11 @@ body {
 
     .footer {
         bottom: 4vh;
-        font-size: 0.65em;
+        font-size: 0.70em;
     }
 
     .context h1 {
-        font-size: 28px;
+        font-size: 29px;
     }
 }
 
