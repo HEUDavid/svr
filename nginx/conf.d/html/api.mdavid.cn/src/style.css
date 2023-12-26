@@ -110,7 +110,7 @@ body {
 
 @media only screen and (max-width: 600px) {
     .list-container {
-        width: 86%;
+        width: 90%;
         top: 48%;
     }
 
@@ -123,12 +123,12 @@ body {
     }
 
     .list {
-        max-height: 54vh;
-        min-height: 54vh;
+        max-height: 55vh;
+        min-height: 55vh;
     }
 
     .list li {
-        font-size: 10pt;
+        font-size: 12px;
     }
 
     .list li .circle {
