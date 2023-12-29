@@ -106,7 +106,7 @@ body {
 }
 
 .context h1 {
-    font-size: 50px;
+    font-size: calc(2rem - 0.5vh);
     color: black;
 }
 
