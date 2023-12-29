@@ -93,7 +93,7 @@ body {
 }
 
 .footer a {
-    font-size: calc(0.6rem + 0.2vw + 0.4vh);
+    font-size: calc(0.5rem + 0.25vw + 0.4vh);
     color: #5c5959;
     text-decoration: none;
 }
