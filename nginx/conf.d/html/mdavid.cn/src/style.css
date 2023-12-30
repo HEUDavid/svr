@@ -1,11 +1,11 @@
 * {
     box-sizing: border-box;
     margin: 0;
-    padding: 0;
+    padding: 0
 }
 
 body {
-    font-family: serif;
+    font-family: serif
 }
 
 .list-container {
@@ -18,21 +18,21 @@ body {
     padding: 10px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
     border-radius: 4px;
-    color: #494277;
+    color: #494277
 }
 
 .list-container h1 {
     font-size: 36pt;
     text-align: center;
     font-weight: 500;
-    margin: 15px 0;
+    margin: 15px 0
 }
 
 .list-container h2 {
     font-size: 22pt;
     text-align: left;
     font-weight: 400;
-    padding-left: 15px;
+    padding-left: 15px
 }
 
 .list {
@@ -41,7 +41,7 @@ body {
     list-style: none;
     padding: 0;
     margin: 10px 0 0;
-    overflow-y: auto;
+    overflow-y: auto
 }
 
 .list li {
@@ -54,34 +54,34 @@ body {
     align-items: center;
     cursor: pointer;
     color: #656565;
-    transition: all 0.6s ease;
+    transition: all 0.6s ease
 }
 
 .list li:hover {
     background: #5c7fed;
-    color: #fff;
+    color: #fff
 }
 
 .list li:hover .circle {
-    color: #fff;
+    color: #fff
 }
 
 .list li .circle {
     margin-right: 6px;
     font-size: 0.90em;
     align-self: center;
-    color: #6ecc8b;
+    color: #6ecc8b
 }
 
 .list li .circle::before {
     content: "•";
-    vertical-align: middle;
+    vertical-align: middle
 }
 
 .list li a {
     font-size: 0.82em;
     text-decoration: none;
-    color: inherit;
+    color: inherit
 }
 
 .footer {
@@ -89,62 +89,62 @@ body {
     font-size: 14px;
     position: absolute;
     width: 100%;
-    text-align: center;
+    text-align: center
 }
 
 .footer a {
     font-size: calc(0.5rem + 0.25vw + 0.35vh);
     color: #5c5959;
-    text-decoration: none;
+    text-decoration: none
 }
 
 .context {
     top: 38vh;
     position: absolute;
     width: 100%;
-    text-align: center;
+    text-align: center
 }
 
 .context h1 {
     font-size: calc(1.5rem + 0.75vw + 1.05vh);
-    color: black;
+    color: black
 }
 
 @media only screen and (max-width: 600px) {
     .list-container {
         width: 90%;
-        top: 48%;
+        top: 48%
     }
 
     .list-container h1 {
-        font-size: 24pt;
+        font-size: 24pt
     }
 
     .list-container h2 {
-        font-size: 14pt;
+        font-size: 14pt
     }
 
     .list {
         max-height: 54vh;
-        min-height: 54vh;
+        min-height: 54vh
     }
 
     .list li {
         font-size: 15px;
-        padding: 4px 0 4px 13px;
+        padding: 4px 0 4px 13px
     }
 
     .list li .circle {
         margin-right: 2px;
-        font-size: 0.8em;
+        font-size: 0.8em
     }
 
     .list li a {
-        font-size: 0.82em;
+        font-size: 0.82em
     }
 
     .context h1 {
-        font-size: calc(1.1rem + 0.75vw + 1.05vh);
+        font-size: calc(1.1rem + 0.75vw + 1.05vh)
     }
 }
 
@@ -155,7 +155,7 @@ body {
     width: 100%;
     height: 100vh;
     z-index: -1;
-    background: linear-gradient(to top, #7ac4de, white);
+    background: linear-gradient(to top, #7ac4de, white)
 }
 
 .circles {
@@ -164,7 +164,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    overflow: hidden;
+    overflow: hidden
 }
 
 .circles li {
@@ -175,14 +175,14 @@ body {
     height: 20px;
     background: rgba(255, 255, 255, 0.4);
     animation: animate 25s linear infinite;
-    bottom: -150px;
+    bottom: -150px
 }
 
 .circles li:nth-child(1) {
     left: 25%;
     width: 80px;
     height: 80px;
-    animation-delay: 0s;
+    animation-delay: 0s
 }
 
 .circles li:nth-child(2) {
@@ -190,14 +190,14 @@ body {
     width: 20px;
     height: 20px;
     animation-delay: 2s;
-    animation-duration: 12s;
+    animation-duration: 12s
 }
 
 .circles li:nth-child(3) {
     left: 70%;
     width: 20px;
     height: 20px;
-    animation-delay: 4s;
+    animation-delay: 4s
 }
 
 .circles li:nth-child(4) {
@@ -205,28 +205,28 @@ body {
     width: 60px;
     height: 60px;
     animation-delay: 0s;
-    animation-duration: 18s;
+    animation-duration: 18s
 }
 
 .circles li:nth-child(5) {
     left: 65%;
     width: 20px;
     height: 20px;
-    animation-delay: 0s;
+    animation-delay: 0s
 }
 
 .circles li:nth-child(6) {
     left: 75%;
     width: 110px;
     height: 110px;
-    animation-delay: 3s;
+    animation-delay: 3s
 }
 
 .circles li:nth-child(7) {
     left: 35%;
     width: 150px;
     height: 150px;
-    animation-delay: 7s;
+    animation-delay: 7s
 }
 
 .circles li:nth-child(8) {
@@ -234,7 +234,7 @@ body {
     width: 25px;
     height: 25px;
     animation-delay: 15s;
-    animation-duration: 45s;
+    animation-duration: 45s
 }
 
 .circles li:nth-child(9) {
@@ -242,7 +242,7 @@ body {
     width: 15px;
     height: 15px;
     animation-delay: 2s;
-    animation-duration: 35s;
+    animation-duration: 35s
 }
 
 .circles li:nth-child(10) {
@@ -250,18 +250,18 @@ body {
     width: 150px;
     height: 150px;
     animation-delay: 0s;
-    animation-duration: 11s;
+    animation-duration: 11s
 }
 
 @keyframes animate {
     0% {
         transform: translateY(0) rotate(0deg);
         opacity: 1;
-        border-radius: 0;
+        border-radius: 0
     }
     100% {
         transform: translateY(-1000px) rotate(720deg);
         opacity: 0;
-        border-radius: 50%;
+        border-radius: 50%
     }
 }
