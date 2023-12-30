@@ -144,7 +144,7 @@ body {
     }
 
     .context h1 {
-        /*font-size: 28px;*/
+        font-size: calc(1rem + 0.75vw + 1.05vh);
     }
 }
 
