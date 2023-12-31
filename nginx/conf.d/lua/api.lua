@@ -39,6 +39,7 @@ elseif uri == "/api/get_files" then
     ngx.header.content_type = "application/json"
     ngx.say(M.get_files("/data/"))
 
+
 else
     ngx.exit(ngx.HTTP_NOT_FOUND)
 end
