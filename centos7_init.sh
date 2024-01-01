@@ -4,7 +4,7 @@
 yum update -y
 
 # 安装必备工具
-yum install curl git vim lrzsz -y
+yum install curl git vim lrzsz wget -y
 
 # 下载初始化脚本
 git clone https://github.com/HEUDavid/svr.git

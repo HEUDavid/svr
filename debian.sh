@@ -4,7 +4,7 @@
 apt update -y
 
 # 安装必备工具
-apt install -y curl git vim lrzsz
+apt install -y curl git vim lrzsz wget
 
 # 下载初始化脚本
 git clone https://github.com/HEUDavid/svr.git
