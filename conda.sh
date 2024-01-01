@@ -21,4 +21,5 @@ conda config --get channels
 
 conda create -n myenv python=3.9
 conda activate myenv
+
 conda install -c conda-forge ta-lib
