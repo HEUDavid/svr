@@ -1,13 +1,8 @@
 dd if=/dev/zero of=/swapfile bs=1M count=2048
-
 chmod 600 /swapfile   # 设置权限
 mkswap /swapfile      # 格式化为交换空间
 swapon /swapfile      # 启用交换空间
 swapon --show
-
-
-yum groupinstall "Development Tools"
-yum install libgomp
 
 
 mkdir -p ~/miniconda3
