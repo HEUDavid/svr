@@ -61,7 +61,7 @@ if [[ "${containers[@]}" =~ "nginx" ]]; then
     docker run -itd --name openresty --restart=always -p 80:80 -p 443:443 -v "${path}/nginx/conf.d:/etc/nginx/conf.d" -v "${path}/workspace/data:/data" openresty/openresty:latest
 fi
 
-# 安装luarocks
+# docker内安装luarocks
 #docker exec -it openresty /bin/bash
 #apt-get update
 #apt-get install -y luarocks
