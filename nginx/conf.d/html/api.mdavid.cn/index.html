@@ -70,7 +70,7 @@
                 second: '2-digit',
                 hour12: false,
             }).format(date);
-            link.textContent = `${formattedDate} ${fileName.replace('.html', '')}`;
+            link.textContent = `${formattedDate} ${file.name.replace('.html', '')}`;
 
             li.appendChild(link);
             return li;
