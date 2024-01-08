@@ -125,8 +125,8 @@ body {
     }
 
     .list {
-        max-height: 54vh;
-        min-height: 54vh
+        max-height: 52vh;
+        min-height: 52vh
     }
 
     .list li {
