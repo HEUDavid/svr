@@ -25,7 +25,7 @@ body {
     font-size: 36pt;
     text-align: center;
     font-weight: 500;
-    margin: 15px 0
+    margin-top: 10px
 }
 
 .list-container h2 {
@@ -36,18 +36,18 @@ body {
 }
 
 .list {
-    max-height: 54vh;
+    max-height: 30vh;
     min-height: 28vh;
     list-style: none;
     padding: 0;
-    margin: 10px 0 0;
+    margin: 5px 0 5px 0;
     overflow-y: auto
 }
 
 .list li {
     font-size: 16px;
     font-family: monospace;
-    padding: 5px 0 5px 15px;
+    padding: 5px 15px 5px 15px;
     border-radius: 4px;
     font-weight: 300;
     display: flex;
@@ -125,13 +125,13 @@ body {
     }
 
     .list {
-        max-height: 54vh;
-        min-height: 54vh
+        max-height: 52vh;
+        min-height: 52vh
     }
 
     .list li {
         font-size: 15px;
-        padding: 4px 0 4px 13px
+        padding: 4px 13px 4px 13px
     }
 
     .list li .circle {
