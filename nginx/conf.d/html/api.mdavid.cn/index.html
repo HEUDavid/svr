@@ -81,6 +81,7 @@
         }
 
         function handleFileList(files) {
+            files.sort((a, b) => b.mtime - a.mtime);
             const fileListElement = document.getElementById('fileList');
             files.forEach(file => {
                 const li = createFileListItem(file);
