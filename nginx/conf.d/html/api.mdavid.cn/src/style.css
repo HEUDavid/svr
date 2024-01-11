@@ -10,7 +10,7 @@ body {
 
 .list-container {
     width: 60%;
-    top: 45%;
+    top: 44%;
     background: rgba(255, 255, 255, 0.4);
     position: absolute;
     left: 50%;
@@ -86,7 +86,6 @@ body {
 
 .footer {
     bottom: 4.0vh;
-    padding-top: 5px;
     position: absolute;
     width: 100%;
     text-align: center
