@@ -37,8 +37,8 @@ body {
 }
 
 .list {
-    max-height: 38.5vh;
-    min-height: 38.5vh;
+    max-height: 38vh;
+    min-height: 38vh;
     list-style: none;
     padding: 0;
     overflow-y: auto
