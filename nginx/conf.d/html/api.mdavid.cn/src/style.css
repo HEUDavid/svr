@@ -85,7 +85,8 @@ body {
 }
 
 .footer {
-    bottom: 4.0vh;
+    bottom: 4.1vh;
+    margin: 5px;
     position: absolute;
     width: 100%;
     text-align: center
