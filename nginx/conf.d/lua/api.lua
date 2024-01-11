@@ -19,6 +19,11 @@ function M.get_files(path)
             })
         end
     end
+
+    table.sort(files, function(a, b)
+        return a.mtime > b.mtime
+    end)
+
     return cjson.encode(files)
 end
 
