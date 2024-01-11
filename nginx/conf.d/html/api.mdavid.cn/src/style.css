@@ -40,7 +40,6 @@ body {
     min-height: 38.5vh;
     list-style: none;
     padding: 0;
-    margin: 3px 0 3px 0;
     overflow-y: auto
 }
 
@@ -86,14 +85,13 @@ body {
 
 .footer {
     bottom: 4.1vh;
-    font-size: 14px;
     position: absolute;
     width: 100%;
     text-align: center
 }
 
 .footer a {
-    font-size: calc(0.5rem + 0.25vw + 0.35vh);
+    font-size: calc(0.5rem + 0.2vw + 0.38vh);
     color: #5c5959;
     text-decoration: none
 }
