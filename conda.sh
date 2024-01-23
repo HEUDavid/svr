@@ -19,3 +19,5 @@ conda create -n myenv python=3.9
 conda activate myenv
 
 conda install -c conda-forge ta-lib
+
+# 接着pip install其他依赖
