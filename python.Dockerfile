@@ -4,7 +4,7 @@ FROM python:3.10
 # 安装必要工具
 RUN apt-get update && \
     apt-get -y upgrade && \
-    apt-get install -y git vim lrzsz openssh-server curl wget iputils-ping
+    apt-get install -y git vim lrzsz openssh-server curl wget iputils-ping fonts-noto-cjk
 
 
 # 配置SSH
