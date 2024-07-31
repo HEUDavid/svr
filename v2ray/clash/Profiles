@@ -32,8 +32,8 @@ parsers: # array
           url: http://www.gstatic.com/generate_204
           interval: 300
           proxies:
-            - SUB
             - GOOD
+            - SUB
             - DIRECT
 
         - name: SUB
