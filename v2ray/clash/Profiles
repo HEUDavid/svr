@@ -16,17 +16,44 @@ parsers: # array
       }
   # 建立自己的配置
     yaml:
+      prepend-proxies: # 自建的
+        - name: mDavid_CN
+          type: vmess
+          server: 68.183.80.144
+          port: 10086
+          uuid: 9a379f53-b4a6-4eaf-9e9d-4e82bb5ed0c7
+          alterId: 0
+          cipher: none
+          udp: true
+
       prepend-proxy-groups: # 建立策略组
         - name: PROXY
           type: select
           url: http://www.gstatic.com/generate_204
           interval: 300
+          proxies:
+            - SUB
+            - GOOD
+            - DIRECT
+
+        - name: SUB
+          type: url-test
+          url: http://www.gstatic.com/generate_204
+          interval: 300
+          tolerance: 50
 
         - name: NO_RULE_MATCHED # 默认已经绕过大陆
           type: select
           proxies:
-            - DIRECT   # 「命中规则的网络流量，才使用代理，其他则直连」
-            - PROXY    # 「没有命中规则的网络流量，也使用代理」
+            - GOOD    # 「没有命中规则的网络流量，也使用代理」
+            - DIRECT  # 「命中规则的网络流量，才使用代理，其他则直连」
+
+        - name: GOOD
+          type: select
+          url: http://www.gstatic.com/generate_204
+          interval: 300
+          proxies:
+            - mDavid_CN
 
   # 策略组示例
        # - name: 默认拦截
@@ -45,8 +72,8 @@ parsers: # array
            # - 节点名称或其他分组套娃
 
       commands:
-        - proxy-groups.PROXY.proxies=[]proxyNames # 向指定策略组添加订阅中的节点名，可使用正则过滤
-        - proxy-groups.PROXY.proxies.0+DIRECT # 向指定分组第一个位置添加一个 DIRECT 节点名
+        - proxy-groups.SUB.proxies=[]proxyNames|^(?!.*mDavid_CN).*$  # 向指定策略组添加订阅中的节点名，可使用正则过滤
+        # - proxy-groups.PROXY.proxies.0+DIRECT # 向指定分组第一个位置添加一个 DIRECT 节点名
 
         # 一些可能用到的正则过滤节点示例，使分组更细致
         # []proxyNames|a                         # 包含a
@@ -57,11 +84,10 @@ parsers: # array
 
   # 添加规则
       prepend-rules: # 规则由上往下遍历，如上面规则已经命中，则不再往下处理
-        - DOMAIN-KEYWORD,chatgpt,PROXY # 用户自定义补充
-        - DOMAIN-SUFFIX,openai.com,PROXY
-        - DOMAIN-SUFFIX,ai.com,PROXY
-        - DOMAIN-SUFFIX,challenges.cloudflare.com,PROXY
-        - DOMAIN-SUFFIX,stripe.com,PROXY
+        - DOMAIN-KEYWORD,chatgpt,GOOD # 用户自定义补充
+        - DOMAIN-SUFFIX,openai.com,GOOD
+        - DOMAIN-SUFFIX,ai.com,GOOD
+        - DOMAIN-SUFFIX,challenges.cloudflare.com,GOOD
         - DOMAIN-SUFFIX,gravatar.com,PROXY
         - DOMAIN-SUFFIX,oaifree.com,DIRECT # L站放行
         - DOMAIN-SUFFIX,deepl.com,DIRECT
