@@ -34,7 +34,6 @@ parsers: # array
           proxies:
             - GOOD
             - SUB
-            - DIRECT
 
         - name: SUB
           type: url-test
