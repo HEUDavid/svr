@@ -1,0 +1,7 @@
+payload:
+  # linux.do
+  - DOMAIN-SUFFIX,oaifree.com
+  # api service
+  - DOMAIN-SUFFIX,deepl.com
+  - DOMAIN-SUFFIX,api.minimax.chat
+  - DOMAIN-SUFFIX,api.deepseek.com

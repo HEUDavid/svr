@@ -16,7 +16,7 @@ parsers: # array
       }
   # 建立自己的配置
     yaml:
-      prepend-proxies: # 自建的
+      prepend-proxies:
         - name: mDavid_CN
           type: vmess
           server: your_ip
@@ -26,7 +26,7 @@ parsers: # array
           cipher: none
           udp: true
 
-      prepend-proxy-groups: # 建立策略组
+      prepend-proxy-groups: # 策略组
         - name: PROXY
           type: select
           url: http://www.gstatic.com/generate_204
@@ -35,7 +35,7 @@ parsers: # array
             - GOOD
             - SUB
 
-        - name: NO_RULE_MATCHED # 默认已经绕过大陆
+        - name: FINAL
           type: select
           proxies:
             - GOOD    # 「没有命中规则的网络流量，也使用代理」
@@ -54,6 +54,15 @@ parsers: # array
           proxies:
             - mDavid_CN
 
+        - name: MEDIA
+          type: select
+          url: http://www.gstatic.com/generate_204
+          interval: 300
+          proxies:
+            - GOOD
+            - SUB
+
+
   # 策略组示例
        # - name: 默认拦截
        #   type: select
@@ -63,7 +72,7 @@ parsers: # array
          # type: select       # 手动选点
                # url-test     # 自动选择延迟最低的节点
                # fallback     # 节点故障时自动切换下一个
-               # laod-balance # 均衡使用分组内的节点
+               # load-balance # 均衡使用分组内的节点
          # url: http://www.gstatic.com/generate_204 # 测试地址 非select类型分组必要
          # interval: 300 # 自动测试间隔时间，单位秒 非select类型分组必要
          # tolerance: 50 # 允许的偏差，节点之间延迟差小于该值不切换 非必要
@@ -71,8 +80,8 @@ parsers: # array
            # - 节点名称或其他分组套娃
 
       commands:
-        - proxy-groups.SUB.proxies=[]proxyNames|^(?!.*mDavid_CN).*$  # 向指定策略组添加订阅中的节点名，可使用正则过滤
-        # - proxy-groups.PROXY.proxies.0+DIRECT # 向指定分组第一个位置添加一个 DIRECT 节点名
+        - proxy-groups.SUB.proxies=[]proxyNames|^(?!.*mDavid_CN).*$  # 向指定策略组(SUB)添加订阅中的节点名，可使用正则过滤
+        # - proxy-groups.PROXY.proxies.0+DIRECT # 向指定分组(PROXY)第一个位置添加一个 DIRECT 节点名
 
         # 一些可能用到的正则过滤节点示例，使分组更细致
         # []proxyNames|a                         # 包含a
@@ -83,33 +92,25 @@ parsers: # array
 
   # 添加规则
       prepend-rules: # 规则由上往下遍历，如上面规则已经命中，则不再往下处理
-        - DOMAIN-SUFFIX,challenges.cloudflare.com,DIRECT
-        - RULE-SET,globalmedia,SUB
-        - DOMAIN-KEYWORD,chatgpt,GOOD
-        - DOMAIN-SUFFIX,openai.com,GOOD
-        - DOMAIN-SUFFIX,ai.com,GOOD
-        - DOMAIN-SUFFIX,gravatar.com,PROXY
-        - DOMAIN-SUFFIX,oaifree.com,DIRECT # L站放行
-        - DOMAIN-SUFFIX,deepl.com,DIRECT
-        - DOMAIN,fonts.gstatic.com,PROXY
-        - DOMAIN,fonts.googleapis.com,PROXY
+        - RULE-SET,mdaviddirect,DIRECT
+        - RULE-SET,douyin,DIRECT
         - RULE-SET,applications,DIRECT
         - DOMAIN,clash.razord.top,DIRECT
         - RULE-SET,private,DIRECT
-        - RULE-SET,icloud,PROXY #
-        - RULE-SET,apple,PROXY # 这三个为国内可直连地址，如果希望走代理改为PROXY
-        - RULE-SET,google,PROXY #
-        - RULE-SET,tld-not-cn,PROXY
-        - RULE-SET,gfw,PROXY
-        - RULE-SET,greatfire,PROXY
-        - RULE-SET,telegramcidr,PROXY
         - RULE-SET,lancidr,DIRECT
         - RULE-SET,cncidr,DIRECT
+        - RULE-SET,mdavidproxy,PROXY
+        - RULE-SET,globalmedia,MEDIA
+        - RULE-SET,icloud,PROXY
+        - RULE-SET,apple,PROXY
+        - RULE-SET,google,PROXY
+        - RULE-SET,telegramcidr,PROXY
+        - RULE-SET,tld-not-cn,PROXY
+        - RULE-SET,gfw,PROXY
+        - RULE-SET,proxy,PROXY
         - GEOIP,LAN,DIRECT
         - GEOIP,CN,DIRECT
-        - RULE-SET,direct,DIRECT
-        - RULE-SET,proxy,PROXY
-        - MATCH,NO_RULE_MATCHED # 规则之外的
+        - MATCH,FINAL
 
   # 添加规则集
       mix-rule-providers:
@@ -118,6 +119,13 @@ parsers: # array
           behavior: classical
           url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/GlobalMedia/GlobalMedia_Classical.yaml"
           path: ./ruleset/globalmedia.yaml
+          interval: 86400
+
+        douyin:
+          type: http
+          behavior: classical
+          url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/DouYin/DouYin.yaml"
+          path: ./ruleset/douyin.yaml
           interval: 86400
 
         icloud: # iCloud 域名列表
@@ -148,13 +156,6 @@ parsers: # array
           path: ./ruleset/proxy.yaml
           interval: 86400
 
-        direct: # 直连域名列表
-          type: http
-          behavior: domain
-          url: "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/direct.txt"
-          path: ./ruleset/direct.yaml
-          interval: 86400
-
         private: # 私有网络专用域名列表
           type: http
           behavior: domain
@@ -167,13 +168,6 @@ parsers: # array
           behavior: domain
           url: "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/gfw.txt"
           path: ./ruleset/gfw.yaml
-          interval: 86400
-
-        greatfire: # GreatFire 域名列表
-          type: http
-          behavior: domain
-          url: "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/greatfire.txt"
-          path: ./ruleset/greatfire.yaml
           interval: 86400
 
         tld-not-cn: # 非中国大陆使用的顶级域名列表
@@ -210,3 +204,17 @@ parsers: # array
           url: "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/applications.txt"
           path: ./ruleset/applications.yaml
           interval: 86400
+
+        mdavidproxy: # 单独补充的
+          type: http
+          behavior: classical
+          url: "https://raw.githubusercontent.com/HEUDavid/svr/main/v2ray/clash/proxy.yaml"
+          path: ./ruleset/mdavidproxy.yaml
+          interval: 864000
+
+        mdaviddirect: # 单独补充的
+          type: http
+          behavior: classical
+          url: "https://raw.githubusercontent.com/HEUDavid/svr/main/v2ray/clash/direct.yaml"
+          path: ./ruleset/mdaviddirect.yaml
+          interval: 864000
