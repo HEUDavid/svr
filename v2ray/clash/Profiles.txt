@@ -51,7 +51,7 @@ parsers: # array
             - mDavid_CN
 
         - name: SUB # 订阅的
-          type: select
+          type: url-test
           url: http://www.gstatic.com/generate_204
           interval: 300
           tolerance: 50
@@ -59,7 +59,8 @@ parsers: # array
         - name: FINAL
           type: select
           proxies:
-            - PROXY    # 「没有命中规则的网络流量，也使用代理」
+            - GOOD
+            - SUB
             - DIRECT
 
   # 策略组示例
