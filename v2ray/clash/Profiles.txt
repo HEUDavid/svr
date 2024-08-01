@@ -39,15 +39,15 @@ parsers: # array
           type: select
           proxies:
             - GOOD    # 「没有命中规则的网络流量，也使用代理」
-            - DIRECT  # 「命中规则的网络流量，才使用代理，其他则直连」
+            - DIRECT
 
-        - name: SUB
+        - name: SUB # 订阅的
           type: url-test
           url: http://www.gstatic.com/generate_204
           interval: 300
           tolerance: 50
 
-        - name: GOOD
+        - name: GOOD # 自建的
           type: select
           url: http://www.gstatic.com/generate_204
           interval: 300
@@ -59,9 +59,8 @@ parsers: # array
           url: http://www.gstatic.com/generate_204
           interval: 300
           proxies:
-            - GOOD
             - SUB
-
+            - GOOD
 
   # 策略组示例
        # - name: 默认拦截
@@ -95,7 +94,6 @@ parsers: # array
         - RULE-SET,mdavid_direct,DIRECT
         - RULE-SET,douyin,DIRECT
         - RULE-SET,applications,DIRECT
-
         - RULE-SET,private,DIRECT
         - RULE-SET,lancidr,DIRECT
         - RULE-SET,cncidr,DIRECT
