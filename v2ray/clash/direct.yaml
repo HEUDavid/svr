@@ -1,5 +1,5 @@
 payload:
-  - DOMAIN,clash.razord.top
+  - DOMAIN-SUFFIX,challenges.cloudflare.com
   # linux.do
   - DOMAIN-SUFFIX,linux.do
   - DOMAIN-SUFFIX,oaifree.com
