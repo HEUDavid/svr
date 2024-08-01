@@ -35,17 +35,13 @@ parsers: # array
             - GOOD
             - SUB
 
-        - name: FINAL
+        - name: MEDIA
           type: select
-          proxies:
-            - GOOD    # 「没有命中规则的网络流量，也使用代理」
-            - DIRECT
-
-        - name: SUB # 订阅的
-          type: url-test
           url: http://www.gstatic.com/generate_204
           interval: 300
-          tolerance: 50
+          proxies:
+            - SUB
+            - GOOD
 
         - name: GOOD # 自建的
           type: select
@@ -54,13 +50,17 @@ parsers: # array
           proxies:
             - mDavid_CN
 
-        - name: MEDIA
-          type: select
+        - name: SUB # 订阅的
+          type: url-test
           url: http://www.gstatic.com/generate_204
           interval: 300
+          tolerance: 50
+
+        - name: FINAL
+          type: select
           proxies:
-            - SUB
-            - GOOD
+            - GOOD    # 「没有命中规则的网络流量，也使用代理」
+            - DIRECT
 
   # 策略组示例
        # - name: 默认拦截
