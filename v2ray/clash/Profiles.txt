@@ -92,14 +92,14 @@ parsers: # array
 
   # 添加规则
       prepend-rules: # 规则由上往下遍历，如上面规则已经命中，则不再往下处理
-        - RULE-SET,mdaviddirect,DIRECT
+        - RULE-SET,mdavid_direct,DIRECT
         - RULE-SET,douyin,DIRECT
         - RULE-SET,applications,DIRECT
-        - DOMAIN,clash.razord.top,DIRECT
+
         - RULE-SET,private,DIRECT
         - RULE-SET,lancidr,DIRECT
         - RULE-SET,cncidr,DIRECT
-        - RULE-SET,mdavidproxy,PROXY
+        - RULE-SET,mdavid_proxy,PROXY
         - RULE-SET,globalmedia,MEDIA
         - RULE-SET,icloud,PROXY
         - RULE-SET,apple,PROXY
@@ -142,7 +142,7 @@ parsers: # array
           path: ./ruleset/apple.yaml
           interval: 86400
 
-        google: # Google 在中国大陆可直连的域名列表
+        google:
           type: http
           behavior: domain
           url: "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/google.txt"
@@ -205,16 +205,16 @@ parsers: # array
           path: ./ruleset/applications.yaml
           interval: 86400
 
-        mdavidproxy: # 单独补充的
+        mdavid_proxy: # 单独补充的
           type: http
           behavior: classical
           url: "https://raw.githubusercontent.com/HEUDavid/svr/main/v2ray/clash/proxy.yaml"
-          path: ./ruleset/mdavidproxy.yaml
+          path: ./ruleset/mdavid_proxy.yaml
           interval: 864000
 
-        mdaviddirect: # 单独补充的
+        mdavid_direct:
           type: http
           behavior: classical
           url: "https://raw.githubusercontent.com/HEUDavid/svr/main/v2ray/clash/direct.yaml"
-          path: ./ruleset/mdaviddirect.yaml
+          path: ./ruleset/mdavid_direct.yaml
           interval: 864000
