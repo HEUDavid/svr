@@ -40,8 +40,8 @@ parsers: # array
           url: http://www.gstatic.com/generate_204
           interval: 300
           proxies:
-            - SUB
             - GOOD
+            - SUB
 
         - name: GOOD # 自建的
           type: select
@@ -51,7 +51,7 @@ parsers: # array
             - mDavid_CN
 
         - name: SUB # 订阅的
-          type: url-test
+          type: select
           url: http://www.gstatic.com/generate_204
           interval: 300
           tolerance: 50
@@ -59,7 +59,7 @@ parsers: # array
         - name: FINAL
           type: select
           proxies:
-            - GOOD    # 「没有命中规则的网络流量，也使用代理」
+            - PROXY    # 「没有命中规则的网络流量，也使用代理」
             - DIRECT
 
   # 策略组示例
