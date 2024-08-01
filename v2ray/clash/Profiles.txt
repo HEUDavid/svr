@@ -59,9 +59,11 @@ parsers: # array
         - name: FINAL
           type: select
           proxies:
-            - DIRECT
             - GOOD
             - SUB
+            - DIRECT
+          ssid-policy:
+            default: GOOD
 
   # 策略组示例
        # - name: 默认拦截
