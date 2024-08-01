@@ -35,17 +35,17 @@ parsers: # array
             - GOOD
             - SUB
 
-        - name: SUB
-          type: url-test
-          url: http://www.gstatic.com/generate_204
-          interval: 300
-          tolerance: 50
-
         - name: NO_RULE_MATCHED # 默认已经绕过大陆
           type: select
           proxies:
             - GOOD    # 「没有命中规则的网络流量，也使用代理」
             - DIRECT  # 「命中规则的网络流量，才使用代理，其他则直连」
+
+        - name: SUB
+          type: url-test
+          url: http://www.gstatic.com/generate_204
+          interval: 300
+          tolerance: 50
 
         - name: GOOD
           type: select
