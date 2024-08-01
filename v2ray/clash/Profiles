@@ -84,10 +84,11 @@ parsers: # array
 
   # 添加规则
       prepend-rules: # 规则由上往下遍历，如上面规则已经命中，则不再往下处理
-        - DOMAIN-KEYWORD,chatgpt,GOOD # 用户自定义补充
+        - DOMAIN-SUFFIX,challenges.cloudflare.com,DIRECT
+        - RULE-SET,globalmedia,SUB
+        - DOMAIN-KEYWORD,chatgpt,GOOD
         - DOMAIN-SUFFIX,openai.com,GOOD
         - DOMAIN-SUFFIX,ai.com,GOOD
-        - DOMAIN-SUFFIX,challenges.cloudflare.com,GOOD
         - DOMAIN-SUFFIX,gravatar.com,PROXY
         - DOMAIN-SUFFIX,oaifree.com,DIRECT # L站放行
         - DOMAIN-SUFFIX,deepl.com,DIRECT
@@ -113,6 +114,13 @@ parsers: # array
 
   # 添加规则集
       mix-rule-providers:
+        globalmedia:
+          type: http
+          behavior: classical
+          url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/GlobalMedia/GlobalMedia_Classical.yaml"
+          path: ./ruleset/globalmedia.yaml
+          interval: 86400
+
         icloud: # iCloud 域名列表
           type: http
           behavior: domain
