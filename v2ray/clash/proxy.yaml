@@ -1,15 +1,11 @@
 payload:
-  - DOMAIN-SUFFIX,ai.com
-  - DOMAIN-SUFFIX,openai.com
-  - DOMAIN-SUFFIX,auth0.com
-  - DOMAIN-SUFFIX,chatgpt.com
-  - DOMAIN-SUFFIX,oaistatic.com
-  # payment
-  - DOMAIN-SUFFIX,stripe.com
-  # register
-  - DOMAIN-SUFFIX,arkoselabs.com
-  - DOMAIN-SUFFIX,openaiapi-site.azureedge.net
   # assets
   - DOMAIN-SUFFIX,gravatar.com
   - DOMAIN,fonts.gstatic.com
   - DOMAIN,fonts.googleapis.com
+  - DOMAIN-SUFFIX,googleapis.cn
+  # Google Play下载服务
+  - DOMAIN-SUFFIX,xn--ngstr-lra8j.com
+  - DOMAIN-SUFFIX,github.io
+  # V2rayse节点工具
+  - DOMAIN,v2rayse.com
