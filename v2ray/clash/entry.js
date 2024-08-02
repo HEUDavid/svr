@@ -69,12 +69,6 @@ const ruleProviders = {
         "url": "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/google.txt",
         "path": "./ruleset/loyalsoldier/google.yaml"
     },
-    "telegramcidr": {
-        ...ruleProviderCommon,
-        "behavior": "ipcidr",
-        "url": "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/telegramcidr.txt",
-        "path": "./ruleset/loyalsoldier/telegramcidr.yaml"
-    },
     "proxy": {
         ...ruleProviderCommon,
         "behavior": "domain",
@@ -160,7 +154,6 @@ const rules = [
     "RULE-SET,icloud,PROXY",
     "RULE-SET,apple,PROXY",
     "RULE-SET,google,PROXY",
-    "RULE-SET,telegramcidr,PROXY,no-resolve",
     "RULE-SET,tld-not-cn,PROXY",
     "RULE-SET,gfw,PROXY",
     "RULE-SET,proxy,PROXY",
