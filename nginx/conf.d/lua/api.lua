@@ -24,11 +24,8 @@ function M.get_files(path)
 end
 
 function M.say_hello()
-    local cmd = "python3 get_node.py"
-    os.execute(cmd)
-    local handle = io.popen(cmd)
-    local result = handle:read("*a")
-    handle:close()
+    local command = "python3 get_node.py"
+    local result = os.execute(command)
     return result
 end
 
