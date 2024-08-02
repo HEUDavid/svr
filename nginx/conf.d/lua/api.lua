@@ -44,7 +44,6 @@ if debug == false then
     else
         ngx.exit(ngx.HTTP_NOT_FOUND)
     end
-
 else
     print("echo:", M.get_node())
 end
