@@ -24,7 +24,7 @@ function M.get_files(path)
 end
 
 function M.get_node()
-    local handle = io.popen("python3 get_node.py")
+    local handle = io.popen("python3 get_node.py 2>&1")
     local result = handle:read("*a")
     handle:close()
     return result
