@@ -23,9 +23,10 @@ function M.get_files(path)
     return cjson.encode(files)
 end
 
-function M.say_hello()
-    local command = "python3 get_node.py"
-    local result = os.execute(command)
+function M.get_node()
+    local handle = io.popen("python3 get_node.py")
+    local result = handle:read("*a")
+    handle:close()
     return result
 end
 
@@ -36,7 +37,7 @@ if debug == false then
     local uri = ngx.var.uri
     if uri == "/api" then
         ngx.header.content_type = "text/plain"
-        ngx.say(M.say_hello())
+        ngx.say(M.get_node())
     elseif uri == "/api/get_files" then
         ngx.header.content_type = "application/json"
         ngx.say(M.get_files("/data/"))
@@ -45,5 +46,5 @@ if debug == false then
     end
 
 else
-    M.say_hello()
+    M.get_node()
 end
