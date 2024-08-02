@@ -24,7 +24,7 @@ function M.get_files(path)
 end
 
 function M.get_node()
-    local handle = io.popen("python3 ./get_node.py 2>&1")
+    local handle = io.popen("python3 /etc/nginx/conf.d/lua/get_node.py 2>&1")
     local result = handle:read("*a")
     handle:close()
     return result
@@ -46,5 +46,5 @@ if debug == false then
     end
 
 else
-    M.get_node()
+    print("echo:", M.get_node())
 end
