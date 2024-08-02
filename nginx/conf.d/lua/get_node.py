@@ -52,7 +52,6 @@ def get_subscribe_url():
 
 
 def get_node():
-    return "test"
     api = get_subscribe_url()
     response = requests.get(api)
     content = base64.b64decode(response.text).decode('utf-8')
