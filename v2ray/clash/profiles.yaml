@@ -75,8 +75,7 @@ parsers:
           cipher: none
           udp: true
 
-      # 添加规则
-      prepend-rules: # 规则由上往下遍历，如上面规则已经命中，则不再往下处理
+      prepend-rules:
         - RULE-SET,mdavid_direct,DIRECT
         - RULE-SET,douyin,DIRECT
         - RULE-SET,applications,DIRECT
@@ -85,6 +84,7 @@ parsers:
         - RULE-SET,icloud,PROXY
         - RULE-SET,apple,PROXY
         - RULE-SET,google,PROXY
+        - RULE-SET,openai,PROXY
         - RULE-SET,tld-not-cn,PROXY
         - RULE-SET,gfw,PROXY
         - RULE-SET,proxy,PROXY
@@ -95,7 +95,6 @@ parsers:
         - GEOIP,CN,DIRECT,no-resolve
         - MATCH,FINAL
 
-      # 添加规则集
       mix-rule-providers:
         icloud:
           type: http
@@ -118,6 +117,13 @@ parsers:
           behavior: domain
           url: https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/google.txt
           path: ./ruleset/loyalsoldier/google.yaml
+        openai:
+          type: http
+          format: yaml
+          interval: 86400
+          behavior: domain
+          url: https://raw.githubusercontent.com/LM-Firefly/Rules/master/Clash-RuleSet-Classical/PROXY/OpenAi.yaml
+          path: ./ruleset/lmfirefly/openai.yaml
         proxy:
           type: http
           format: yaml
