@@ -1,17 +1,14 @@
-parsers: # array
+parsers:
   - reg: ^.*$
     # 格式化配置文件
     code: |
       module.exports.parse = (raw, { yaml }) => {
         const rawObj = yaml.parse(raw);
-        delete rawObj['port']
-        delete rawObj['socks-port']
-        delete rawObj['allow-lan']
-        delete rawObj['mode']
-        delete rawObj['log-level']
-        delete rawObj['external-controller']
-        const updatedObj = { ...rawObj, 'proxy-groups': [], rules: [] };
-        return yaml.stringify(updatedObj);
+        const newObj = {
+          'proxies': rawObj['proxies'],
+          'proxy-providers': rawObj['proxy-providers'],
+        };
+        return yaml.stringify(newObj);
       }
     # 建立自己的配置
     yaml:
@@ -64,9 +61,8 @@ parsers: # array
           ssid-policy:
             default: GOOD
 
-
       commands:
-        - proxy-groups.SUB.proxies=[]proxyNames|^(?!.*mDavid_CN).*$  # 向指定策略组(SUB)添加订阅中的节点名，可使用正则过滤
+        - proxy-groups.SUB.proxies=[]proxyNames|^(?!.*mDavid_CN).*$ # 向指定策略组(SUB)添加订阅中的节点名，可使用正则过滤
         # - proxy-groups.PROXY.proxies.0+DIRECT # 向指定分组(PROXY)第一个位置添加一个 DIRECT 节点名
 
         # 一些可能用到的正则过滤节点示例，使分组更细致
