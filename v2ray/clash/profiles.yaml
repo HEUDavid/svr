@@ -22,47 +22,67 @@ parsers:
           cipher: none
           udp: true
 
-      prepend-proxy-groups: # 策略组
-        - name: PROXY
+      prepend-proxy-groups:
+        - interval: 300
+          timeout: 3000
+          url: https://www.google.com/generate_204
+          lazy: true
+          max-failed-times: 3
+          hidden: false
+          name: PROXY
           type: select
-          url: http://www.gstatic.com/generate_204
-          interval: 300
           proxies:
             - GOOD
             - SUB
 
-        - name: MEDIA
+        - interval: 300
+          timeout: 3000
+          url: https://www.google.com/generate_204
+          lazy: true
+          max-failed-times: 3
+          hidden: false
+          name: MEDIA
           type: select
-          url: http://www.gstatic.com/generate_204
-          interval: 300
           proxies:
             - GOOD
             - SUB
 
-        - name: GOOD # 自建的
+        - interval: 300
+          timeout: 3000
+          url: https://www.google.com/generate_204
+          lazy: true
+          max-failed-times: 3
+          hidden: false
+          name: GOOD
           type: select
-          url: http://www.gstatic.com/generate_204
-          interval: 300
           proxies:
             - mDavid_CN
 
-        - name: SUB # 订阅的
+        - interval: 300
+          timeout: 3000
+          url: https://www.google.com/generate_204
+          lazy: true
+          max-failed-times: 3
+          hidden: false
+          name: SUB
           type: url-test
-          url: http://www.gstatic.com/generate_204
-          interval: 300
           tolerance: 50
 
-        - name: FINAL
+        - interval: 300
+          timeout: 3000
+          url: https://www.google.com/generate_204
+          lazy: true
+          max-failed-times: 3
+          hidden: false
+          name: FINAL
           type: select
           proxies:
             - GOOD
             - SUB
             - DIRECT
-          ssid-policy:
-            default: GOOD
 
       commands:
-        - proxy-groups.SUB.proxies=[]proxyNames|^(?!.*mDavid_CN).*$ # 向指定策略组(SUB)添加订阅中的节点名，可使用正则过滤
+        - proxy-groups.SUB.proxies=[]proxyNames|^(?!.*mDavid.*).*$ # 向指定策略组(SUB)添加订阅中的节点名，可使用正则过滤
         # - proxy-groups.PROXY.proxies.0+DIRECT # 向指定分组(PROXY)第一个位置添加一个 DIRECT 节点名
 
         # 一些可能用到的正则过滤节点示例，使分组更细致
