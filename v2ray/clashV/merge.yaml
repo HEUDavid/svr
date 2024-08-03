@@ -11,7 +11,7 @@ proxies:
     type: vmess
     server: your_ip
     port: 10086
-    uuid: abc
+    uuid: abcd
     alterId: 0
     cipher: none
     udp: true
