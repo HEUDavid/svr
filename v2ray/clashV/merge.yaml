@@ -3,9 +3,6 @@
 profile:
   store-selected: true
 
-dns:
-  use-system-hosts: false
-
 proxies:
   - name: mDavid_CN
     type: vmess
