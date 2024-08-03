@@ -1,5 +1,4 @@
 parsers: # array
-  # - reg: ^.*$ 匹配所有订阅 或  - url: https://example.com/profile.yaml 指定订阅
   - reg: ^.*$
   # 格式化配置文件
     code: |
@@ -65,21 +64,6 @@ parsers: # array
           ssid-policy:
             default: GOOD
 
-  # 策略组示例
-       # - name: 默认拦截
-       #   type: select
-       #   proxies:
-       #     - REJECT
-       # - name: 分组名
-         # type: select       # 手动选点
-               # url-test     # 自动选择延迟最低的节点
-               # fallback     # 节点故障时自动切换下一个
-               # load-balance # 均衡使用分组内的节点
-         # url: http://www.gstatic.com/generate_204 # 测试地址 非select类型分组必要
-         # interval: 300 # 自动测试间隔时间，单位秒 非select类型分组必要
-         # tolerance: 50 # 允许的偏差，节点之间延迟差小于该值不切换 非必要
-         # proxies:
-           # - 节点名称或其他分组套娃
 
       commands:
         - proxy-groups.SUB.proxies=[]proxyNames|^(?!.*mDavid_CN).*$  # 向指定策略组(SUB)添加订阅中的节点名，可使用正则过滤
@@ -97,20 +81,19 @@ parsers: # array
         - RULE-SET,mdavid_direct,DIRECT
         - RULE-SET,douyin,DIRECT
         - RULE-SET,applications,DIRECT
-        - RULE-SET,private,DIRECT
-        - RULE-SET,lancidr,DIRECT
-        - RULE-SET,cncidr,DIRECT
         - RULE-SET,mdavid_proxy,PROXY
         - RULE-SET,globalmedia,MEDIA
         - RULE-SET,icloud,PROXY
         - RULE-SET,apple,PROXY
         - RULE-SET,google,PROXY
-        - RULE-SET,telegramcidr,PROXY
         - RULE-SET,tld-not-cn,PROXY
         - RULE-SET,gfw,PROXY
         - RULE-SET,proxy,PROXY
-        - GEOIP,LAN,DIRECT
-        - GEOIP,CN,DIRECT
+        - RULE-SET,private,DIRECT
+        - RULE-SET,lancidr,DIRECT,no-resolve
+        - RULE-SET,cncidr,DIRECT,no-resolve
+        - GEOIP,LAN,DIRECT,no-resolve
+        - GEOIP,CN,DIRECT,no-resolve
         - MATCH,FINAL
 
   # 添加规则集
