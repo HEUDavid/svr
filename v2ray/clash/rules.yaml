@@ -468,9 +468,11 @@ prepend-rules:
   - DOMAIN-SUFFIX,challenges.cloudflare.com,PROXY
   - DOMAIN-SUFFIX,ai.com,PROXY
   - DOMAIN-SUFFIX,stripe.com,PROXY
-  - DOMAIN-SUFFIX,gravatar.com,PROXY
+  - RULE-SET,mdavid_proxy,PROXY
   # > 自定义放行
-  - DOMAIN-SUFFIX,oaifree.com,DIRECT
+  - RULE-SET,mdavid_direct,DIRECT
+  - RULE-SET,douyin,DIRECT
+  - RULE-SET,applications,DIRECT
   ############ 自定义规则结束 ############
   # > Google
   - DOMAIN-SUFFIX,ampproject.org,PROXY
