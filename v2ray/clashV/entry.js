@@ -43,127 +43,6 @@ const dnsConfig = {
         "geosite:google,youtube,telegram,gfw,geolocation-!cn": foreignNameservers
     }
 };
-// 规则集通用配置
-const ruleProviderCommon = {
-    "type": "http",
-    "format": "yaml",
-    "interval": 86400
-};
-// 规则集配置
-const ruleProviders = {
-    "icloud": {
-        ...ruleProviderCommon,
-        "behavior": "domain",
-        "url": "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/icloud.txt",
-        "path": "./ruleset/loyalsoldier/icloud.yaml"
-    },
-    "apple": {
-        ...ruleProviderCommon,
-        "behavior": "domain",
-        "url": "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/apple.txt",
-        "path": "./ruleset/loyalsoldier/apple.yaml"
-    },
-    "google": {
-        ...ruleProviderCommon,
-        "behavior": "domain",
-        "url": "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/google.txt",
-        "path": "./ruleset/loyalsoldier/google.yaml"
-    },
-    "proxy": {
-        ...ruleProviderCommon,
-        "behavior": "domain",
-        "url": "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/proxy.txt",
-        "path": "./ruleset/loyalsoldier/proxy.yaml"
-    },
-    "private": {
-        ...ruleProviderCommon,
-        "behavior": "domain",
-        "url": "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/private.txt",
-        "path": "./ruleset/loyalsoldier/private.yaml"
-    },
-    "gfw": {
-        ...ruleProviderCommon,
-        "behavior": "domain",
-        "url": "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/gfw.txt",
-        "path": "./ruleset/loyalsoldier/gfw.yaml"
-    },
-    "tld-not-cn": {
-        ...ruleProviderCommon,
-        "behavior": "domain",
-        "url": "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/tld-not-cn.txt",
-        "path": "./ruleset/loyalsoldier/tld-not-cn.yaml"
-    },
-    "cncidr": {
-        ...ruleProviderCommon,
-        "behavior": "ipcidr",
-        "url": "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/cncidr.txt",
-        "path": "./ruleset/loyalsoldier/cncidr.yaml"
-    },
-    "lancidr": {
-        ...ruleProviderCommon,
-        "behavior": "ipcidr",
-        "url": "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/lancidr.txt",
-        "path": "./ruleset/loyalsoldier/lancidr.yaml"
-    },
-    "applications": {
-        ...ruleProviderCommon,
-        "behavior": "classical",
-        "url": "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/applications.txt",
-        "path": "./ruleset/loyalsoldier/applications.yaml"
-    },
-    "openai": {
-        ...ruleProviderCommon,
-        "behavior": "classical",
-        "url": "https://fastly.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/OpenAI/OpenAI.yaml",
-        "path": "./ruleset/blackmatrix7/openai.yaml"
-    },
-    "globalmedia": {
-        ...ruleProviderCommon,
-        "behavior": "classical",
-        "url": "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/GlobalMedia/GlobalMedia_Classical.yaml",
-        "path": "./ruleset/blackmatrix7/globalmedia.yaml"
-    },
-    "douyin": {
-        ...ruleProviderCommon,
-        "behavior": "classical",
-        "url": "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/DouYin/DouYin.yaml",
-        "path": "./ruleset/blackmatrix7/douyin.yaml"
-    },
-    "mdavid_proxy": {
-        ...ruleProviderCommon,
-        "behavior": "classical",
-        "url": "https://raw.githubusercontent.com/HEUDavid/svr/main/v2ray/clash/proxy.yaml",
-        "path": "./ruleset/mdavid/proxy.yaml"
-    },
-    "mdavid_direct": {
-        ...ruleProviderCommon,
-        "behavior": "classical",
-        "url": "https://raw.githubusercontent.com/HEUDavid/svr/main/v2ray/clash/direct.yaml",
-        "path": "./ruleset/mdavid/direct.yaml"
-    },
-};
-// 规则
-const rules = [
-    // 自定义规则
-    "RULE-SET,mdavid_direct,DIRECT",
-    "RULE-SET,douyin,DIRECT",
-    "RULE-SET,applications,DIRECT",
-    "RULE-SET,mdavid_proxy,PROXY",
-    "RULE-SET,openai,PROXY",
-    "RULE-SET,globalmedia,MEDIA", // 国外流媒体
-    "RULE-SET,icloud,PROXY",
-    "RULE-SET,apple,PROXY",
-    "RULE-SET,google,PROXY",
-    "RULE-SET,tld-not-cn,PROXY",
-    "RULE-SET,gfw,PROXY",
-    "RULE-SET,proxy,PROXY",
-    "RULE-SET,private,DIRECT",
-    "RULE-SET,lancidr,DIRECT,no-resolve",
-    "RULE-SET,cncidr,DIRECT,no-resolve",
-    "GEOIP,LAN,DIRECT,no-resolve",
-    "GEOIP,CN,DIRECT,no-resolve",
-    "MATCH,FINAL"
-];
 // 代理组通用配置
 const groupBaseOption = {
     "interval": 300,
@@ -173,7 +52,6 @@ const groupBaseOption = {
     "max-failed-times": 3,
     "hidden": false
 };
-
 // 程序入口
 function main(config, profileName) {
     const proxyCount = config?.proxies?.length ?? 0;
@@ -182,10 +60,8 @@ function main(config, profileName) {
     if (proxyCount === 0 && proxyProviderCount === 0) {
         throw new Error("配置文件中未找到任何代理");
     }
-
     // 覆盖原配置中DNS配置
     config["dns"] = dnsConfig;
-
     // 覆盖原配置中的代理组
     config["proxy-groups"] = [
         {
@@ -213,7 +89,7 @@ function main(config, profileName) {
         {
             ...groupBaseOption,
             "name": "SUB",
-            "type": "select",
+            "type": "url-test",
             "tolerance": 50,
             "include-all": true,
             "exclude-filter": ".*mDavid.*",
@@ -227,10 +103,5 @@ function main(config, profileName) {
             "icon": "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/fish.svg"
         }
     ];
-
-    // 覆盖原配置中的规则
-    config["rule-providers"] = ruleProviders;
-    config["rules"] = rules;
-
     return config;
 }
