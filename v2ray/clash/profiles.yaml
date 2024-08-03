@@ -2,11 +2,64 @@ parsers:
   - reg: ^.*$
     # 格式化配置文件
     code: |
-      module.exports.parse = (raw, { yaml }) => {
-        const rawObj = yaml.parse(raw);
+      module.exports.parse = (raw, {yaml}) => {
+        const config = yaml.parse(raw);
+        const groupBaseOption = {
+          "interval": 300,
+          "timeout": 3000,
+          "url": "https://www.google.com/generate_204",
+          "lazy": true,
+          "max-failed-times": 3,
+          "hidden": false
+        };
+        const sub = {
+          ...groupBaseOption,
+          "name": "SUB",
+          "type": "url-test",
+          "tolerance": 50,
+        }
+        const proxyCount = config?.proxies?.length ?? 0;
+        if (proxyCount > 0) {
+          sub.proxies = config.proxies
+            .map((proxy) => proxy.name)
+            .filter((name) => !name.includes("mDavid"));
+        }
+        const proxyProviderCount =
+          typeof config?.["proxy-providers"] === "object" ? Object.keys(config["proxy-providers"]).length : 0;
+        if (proxyProviderCount > 0) {
+          sub.use = Object.keys(config["proxy-providers"]);
+        }
+        config["proxy-groups"] = [
+          {
+            ...groupBaseOption,
+            "name": "PROXY",
+            "type": "select",
+            "proxies": ["GOOD", "SUB"],
+          },
+          {
+            ...groupBaseOption,
+            "name": "MEDIA",
+            "type": "select",
+            "proxies": ["GOOD", "SUB"],
+          },
+          {
+            ...groupBaseOption,
+            "name": "GOOD",
+            "type": "select",
+            "proxies": ["mDavid_CN"],
+          },
+          sub,
+          {
+            ...groupBaseOption,
+            "name": "FINAL",
+            "type": "select",
+            "proxies": ["GOOD", "SUB", "DIRECT"],
+          }
+        ];
         const newObj = {
-          'proxies': rawObj['proxies'],
-          'proxy-providers': rawObj['proxy-providers'],
+          'proxies': config['proxies'],
+          'proxy-providers': config['proxy-providers'],
+          'proxy-groups': config['proxy-groups'],
         };
         return yaml.stringify(newObj);
       }
@@ -21,76 +74,6 @@ parsers:
           alterId: 0
           cipher: none
           udp: true
-
-      prepend-proxy-groups:
-        - interval: 300
-          timeout: 3000
-          url: https://www.google.com/generate_204
-          lazy: true
-          max-failed-times: 3
-          hidden: false
-          name: PROXY
-          type: select
-          proxies:
-            - GOOD
-            - SUB
-
-        - interval: 300
-          timeout: 3000
-          url: https://www.google.com/generate_204
-          lazy: true
-          max-failed-times: 3
-          hidden: false
-          name: MEDIA
-          type: select
-          proxies:
-            - GOOD
-            - SUB
-
-        - interval: 300
-          timeout: 3000
-          url: https://www.google.com/generate_204
-          lazy: true
-          max-failed-times: 3
-          hidden: false
-          name: GOOD
-          type: select
-          proxies:
-            - mDavid_CN
-
-        - interval: 300
-          timeout: 3000
-          url: https://www.google.com/generate_204
-          lazy: true
-          max-failed-times: 3
-          hidden: false
-          name: SUB
-          type: url-test
-          tolerance: 50
-
-        - interval: 300
-          timeout: 3000
-          url: https://www.google.com/generate_204
-          lazy: true
-          max-failed-times: 3
-          hidden: false
-          name: FINAL
-          type: select
-          proxies:
-            - GOOD
-            - SUB
-            - DIRECT
-
-      commands:
-        - proxy-groups.SUB.proxies=[]proxyNames|^(?!.*mDavid.*).*$ # 向指定策略组(SUB)添加订阅中的节点名，可使用正则过滤
-        # - proxy-groups.PROXY.proxies.0+DIRECT # 向指定分组(PROXY)第一个位置添加一个 DIRECT 节点名
-
-        # 一些可能用到的正则过滤节点示例，使分组更细致
-        # []proxyNames|a                         # 包含a
-        # []proxyNames|^(.*)(a|b)+(.*)$          # 包含a或b
-        # []proxyNames|^(?=.*a)(?=.*b).*$        # 包含a和b
-        # []proxyNames|^((?!b).)*a((?!b).)*$     # 包含a且不包含b
-        # []proxyNames|^((?!b|c).)*a((?!b|c).)*$ # 包含a且不包含b或c
 
       # 添加规则
       prepend-rules: # 规则由上往下遍历，如上面规则已经命中，则不再往下处理
