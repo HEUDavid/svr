@@ -1,6 +1,5 @@
 function main(config) {
   const proxyCount = config?.proxies?.length ?? 0;
-  console.log(proxyCount);
   if (proxyCount > 0) {
     let proxyNames = config.proxies
       .map((proxy) => proxy.name)
@@ -15,7 +14,6 @@ function main(config) {
     typeof config?.["proxy-providers"] === "object"
       ? Object.keys(config["proxy-providers"]).length
       : 0;
-  console.log(proxyProviderCount);
   if (proxyProviderCount > 0) {
     let providerNames = Object.keys(config["proxy-providers"]);
     config["proxy-groups"].forEach((group) => {
