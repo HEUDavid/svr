@@ -52,6 +52,7 @@ dns:
       - https://doh.pub/dns-query
       - https://dns.alidns.com/dns-query
 
+# prepend-proxies: if client is clashN
 proxies:
   - name: mDavid_CN
     type: vmess
