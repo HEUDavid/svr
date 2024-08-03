@@ -15,18 +15,18 @@ function main(config, profileName) {
   }
   config["proxy-groups"] = [
     {
-      ...groupBaseOption,
       "name": "PROXY",
       "type": "select",
       "proxies": ["GOOD", "SUB"],
-      "icon": "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/adjust.svg"
+      "icon": "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/adjust.svg",
+      ...groupBaseOption,
     },
     {
-      ...groupBaseOption,
       "name": "MEDIA",
       "type": "select",
       "proxies": ["GOOD", "SUB"],
-      "icon": "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/youtube.svg"
+      "icon": "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/youtube.svg",
+      ...groupBaseOption,
     },
     {
       ...groupBaseOption,
@@ -37,21 +37,21 @@ function main(config, profileName) {
       "icon": "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/speed.svg"
     },
     {
-      ...groupBaseOption,
       "name": "SUB",
       "type": "url-test",
       "tolerance": 50,
       "include-all": true,
       "exclude-filter": ".*mDavid.*",
-      "icon": "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/link.svg"
+      "icon": "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/link.svg",
+      ...groupBaseOption,
     },
     {
-      ...groupBaseOption,
       "name": "FINAL",
       "type": "select",
       "proxies": ["GOOD", "SUB", "DIRECT"],
-      "icon": "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/fish.svg"
-    }
+      "icon": "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/fish.svg",
+      ...groupBaseOption,
+    },
   ];
   return config;
 }
