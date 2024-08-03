@@ -6,13 +6,13 @@ module.exports.parse = (raw, {yaml}) => {
     "url": "https://www.google.com/generate_204",
     "lazy": true,
     "max-failed-times": 3,
-    "hidden": false
+    "hidden": false,
   };
   const sub = {
-    ...groupBaseOption,
     "name": "SUB",
     "type": "url-test",
     "tolerance": 50,
+    ...groupBaseOption,
   }
   const proxyCount = config?.proxies?.length ?? 0;
   if (proxyCount > 0) {
@@ -27,35 +27,35 @@ module.exports.parse = (raw, {yaml}) => {
   }
   config["proxy-groups"] = [
     {
-      ...groupBaseOption,
       "name": "PROXY",
       "type": "select",
       "proxies": ["GOOD", "SUB"],
+      ...groupBaseOption,
     },
     {
-      ...groupBaseOption,
       "name": "MEDIA",
       "type": "select",
       "proxies": ["GOOD", "SUB"],
+      ...groupBaseOption,
     },
     {
-      ...groupBaseOption,
       "name": "GOOD",
       "type": "select",
       "proxies": ["mDavid_CN"],
+      ...groupBaseOption,
     },
     sub,
     {
-      ...groupBaseOption,
       "name": "FINAL",
       "type": "select",
       "proxies": ["GOOD", "SUB", "DIRECT"],
+      ...groupBaseOption,
     }
   ];
-  const newObj = {
+  const newConf = {
     'proxies': config['proxies'],
     'proxy-providers': config['proxy-providers'],
     'proxy-groups': config['proxy-groups'],
   };
-  return yaml.stringify(newObj);
+  return yaml.stringify(newConf);
 }
