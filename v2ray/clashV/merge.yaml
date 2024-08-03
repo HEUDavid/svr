@@ -121,6 +121,7 @@ rule-providers:
     path: ./ruleset/mdavid/direct.yaml
 
 rules:
+  - RULE-SET,openai,PROXY
   - RULE-SET,mdavid_direct,DIRECT
   - RULE-SET,douyin,DIRECT
   - RULE-SET,applications,DIRECT
@@ -129,7 +130,6 @@ rules:
   - RULE-SET,icloud,PROXY
   - RULE-SET,apple,PROXY
   - RULE-SET,google,PROXY
-  - RULE-SET,openai,PROXY
   - RULE-SET,tld-not-cn,PROXY
   - RULE-SET,gfw,PROXY
   - RULE-SET,proxy,PROXY
