@@ -1,5 +1,4 @@
 payload:
-  - DOMAIN-SUFFIX,challenges.cloudflare.com
   # assets
   - DOMAIN-SUFFIX,gravatar.com
   - DOMAIN,fonts.gstatic.com
