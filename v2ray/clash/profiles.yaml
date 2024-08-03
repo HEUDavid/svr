@@ -68,7 +68,7 @@ parsers:
       prepend-proxies:
         - name: mDavid_CN
           type: vmess
-          server: your_ip
+          server: ip
           port: 10086
           uuid: abc
           alterId: 0
