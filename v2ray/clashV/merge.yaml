@@ -9,9 +9,9 @@ dns:
 proxies:
   - name: mDavid_CN
     type: vmess
-    server: 68.183.80.144
+    server: your_ip
     port: 10086
-    uuid: 9a379f53-b4a6-4eaf-9e9d-4e82bb5ed0c7
+    uuid: abc
     alterId: 0
     cipher: none
     udp: true
