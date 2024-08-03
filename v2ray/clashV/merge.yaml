@@ -1,0 +1,17 @@
+# Profile Enhancement Merge Template for Clash Verge
+
+profile:
+  store-selected: true
+
+dns:
+  use-system-hosts: false
+
+proxies:
+  - name: mDavid_CN
+    type: vmess
+    server: 68.183.80.144
+    port: 10086
+    uuid: 9a379f53-b4a6-4eaf-9e9d-4e82bb5ed0c7
+    alterId: 0
+    cipher: none
+    udp: true
