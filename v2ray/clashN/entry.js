@@ -11,7 +11,6 @@ function main(config) {
             }
         });
     }
-
     const proxyProviderCount =
         typeof config?.["proxy-providers"] === "object"
             ? Object.keys(config["proxy-providers"]).length
@@ -26,6 +25,5 @@ function main(config) {
             }
         });
     }
-
     return config;
 }
