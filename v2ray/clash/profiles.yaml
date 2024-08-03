@@ -75,26 +75,6 @@ parsers:
           cipher: none
           udp: true
 
-      prepend-rules:
-        - RULE-SET,mdavid_direct,DIRECT
-        - RULE-SET,douyin,DIRECT
-        - RULE-SET,applications,DIRECT
-        - RULE-SET,mdavid_proxy,PROXY
-        - RULE-SET,globalmedia,MEDIA
-        - RULE-SET,icloud,PROXY
-        - RULE-SET,apple,PROXY
-        - RULE-SET,google,PROXY
-        - RULE-SET,openai,PROXY
-        - RULE-SET,tld-not-cn,PROXY
-        - RULE-SET,gfw,PROXY
-        - RULE-SET,proxy,PROXY
-        - RULE-SET,private,DIRECT
-        - RULE-SET,lancidr,DIRECT,no-resolve
-        - RULE-SET,cncidr,DIRECT,no-resolve
-        - GEOIP,LAN,DIRECT,no-resolve
-        - GEOIP,CN,DIRECT,no-resolve
-        - MATCH,FINAL
-
       mix-rule-providers:
         icloud:
           type: http
@@ -201,3 +181,23 @@ parsers:
           behavior: classical
           url: https://raw.githubusercontent.com/HEUDavid/svr/main/v2ray/clash/direct.yaml
           path: ./ruleset/mdavid/direct.yaml
+
+      prepend-rules:
+        - RULE-SET,mdavid_direct,DIRECT
+        - RULE-SET,douyin,DIRECT
+        - RULE-SET,applications,DIRECT
+        - RULE-SET,mdavid_proxy,PROXY
+        - RULE-SET,globalmedia,MEDIA
+        - RULE-SET,icloud,PROXY
+        - RULE-SET,apple,PROXY
+        - RULE-SET,google,PROXY
+        - RULE-SET,openai,PROXY
+        - RULE-SET,tld-not-cn,PROXY
+        - RULE-SET,gfw,PROXY
+        - RULE-SET,proxy,PROXY
+        - RULE-SET,private,DIRECT
+        - RULE-SET,lancidr,DIRECT,no-resolve
+        - RULE-SET,cncidr,DIRECT,no-resolve
+        - GEOIP,LAN,DIRECT,no-resolve
+        - GEOIP,CN,DIRECT,no-resolve
+        - MATCH,FINAL
