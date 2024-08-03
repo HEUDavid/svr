@@ -1,4 +1,3 @@
-// 代理组通用配置
 const groupBaseOption = {
   "interval": 300,
   "timeout": 3000,
@@ -7,7 +6,6 @@ const groupBaseOption = {
   "max-failed-times": 3,
   "hidden": false
 };
-// 程序入口
 function main(config, profileName) {
   const proxyCount = config?.proxies?.length ?? 0;
   const proxyProviderCount =
@@ -15,7 +13,6 @@ function main(config, profileName) {
   if (proxyCount === 0 && proxyProviderCount === 0) {
     throw new Error("配置文件中未找到任何代理");
   }
-  // 覆盖原配置中的代理组
   config["proxy-groups"] = [
     {
       ...groupBaseOption,
@@ -56,6 +53,5 @@ function main(config, profileName) {
       "icon": "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/fish.svg"
     }
   ];
-  config["dns"].enable = false;
   return config;
 }
