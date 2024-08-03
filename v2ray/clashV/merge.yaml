@@ -38,6 +38,13 @@ rule-providers:
     behavior: domain
     url: https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/google.txt
     path: ./ruleset/loyalsoldier/google.yaml
+  openai:
+    type: http
+    format: yaml
+    interval: 86400
+    behavior: domain
+    url: https://raw.githubusercontent.com/LM-Firefly/Rules/master/Clash-RuleSet-Classical/PROXY/OpenAi.yaml
+    path: ./ruleset/lmfirefly/openai.yaml
   proxy:
     type: http
     format: yaml
@@ -125,6 +132,7 @@ rules:
   - RULE-SET,icloud,PROXY
   - RULE-SET,apple,PROXY
   - RULE-SET,google,PROXY
+  - RULE-SET,openai,PROXY
   - RULE-SET,tld-not-cn,PROXY
   - RULE-SET,gfw,PROXY
   - RULE-SET,proxy,PROXY
