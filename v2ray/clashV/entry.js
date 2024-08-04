@@ -88,5 +88,8 @@ function main(config, profileName) {
       obj[key] = config["rule-providers"][key];
       return obj;
     }, {});
+  config["dns"] = {
+    enable: false,
+  };
   return config;
 }
