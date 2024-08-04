@@ -14,7 +14,7 @@ const subGroup = {
   proxies: [],
   use: [],
 };
-const proxyGroups = [
+const allGroups = [
   {
     name: "PROXY",
     type: "select",
@@ -59,8 +59,8 @@ function main(config, profileName) {
   if (proxyProviderCount > 0) {
     subGroup.use = Object.keys(config["proxy-providers"]);
   }
-  proxyGroups[3] = subGroup;
-  config["proxy-groups"] = proxyGroups;
+  allGroups[3] = subGroup;
+  config["proxy-groups"] = allGroups;
   config["rule-providers"] = Object.keys(config["rule-providers"])
     .filter((key) => config["used-rule-providers"].includes(key))
     .reduce((obj, key) => {
