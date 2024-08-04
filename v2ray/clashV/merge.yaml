@@ -551,10 +551,10 @@ rules:
   # > 自定义代理
   - DOMAIN-KEYWORD,chatgpt,PROXY
   - DOMAIN-SUFFIX,openai.com,PROXY
-  - DOMAIN-SUFFIX,challenges.cloudflare.com,PROXY
   - DOMAIN-SUFFIX,ai.com,PROXY
   - DOMAIN-SUFFIX,stripe.com,PROXY
   - RULE-SET,mdavid_proxy,PROXY
+  - DOMAIN-SUFFIX,challenges.cloudflare.com,PROXY
   # > 自定义放行
   - RULE-SET,mdavid_direct,DIRECT
   - RULE-SET,douyin,DIRECT
