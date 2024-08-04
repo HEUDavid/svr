@@ -43,7 +43,7 @@ dns:
     ipcidr: # ips in these subnets will be considered polluted
       - 240.0.0.0/4
 
-# prepend-proxies: if client is clashN
+#prepend-proxies: if client is clashN
 proxies:
   - name: mDavid_CN
     type: vmess
