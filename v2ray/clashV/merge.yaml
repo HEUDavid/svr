@@ -43,18 +43,18 @@ dns:
     ipcidr: # ips in these subnets will be considered polluted
       - 240.0.0.0/4
 
-#prepend-proxies: if client is clashN
-proxies:
-  - name: mDavid_CN
-    type: vmess
-    server: ip
-    port: 10086
-    uuid: abc
-    alterId: 0
-    cipher: none
-    udp: true
+# if client is clashN
+#prepend-proxies:
+#  - name: mDavid_CN
+#    type: vmess
+#    server: ip
+#    port: 10086
+#    uuid: abc
+#    alterId: 0
+#    cipher: none
+#    udp: true
 
-#file: noinspection YAMLSchemaValidation
+# file: noinspection YAMLSchemaValidation
 rules:
   # > Google
   - DOMAIN-SUFFIX,googletraveladservices.com,DIRECT
