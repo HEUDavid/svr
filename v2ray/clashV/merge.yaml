@@ -13,6 +13,12 @@ profile:
 #    cipher: none
 #    udp: true
 
+used-rule-providers:
+  - mdavid_proxy
+  - mdavid_direct
+  - douyin
+  - applications
+
 rule-providers:
   mdavid_proxy:
     type: http
