@@ -14,13 +14,12 @@ path=/root/svr
 # 需要启动的服务项
 containers=(
     "nginx"
-    "mysql"
+#    "mysql"
     "v2ray"
-    "python"
-    "golang"
+#    "python"
+#    "golang"
 )
 
-printf "请上传SSL证书至 ${path}/nginx/conf.d/ssl\n"
 
 printf "请输入密码：\n"
 read passwd
@@ -28,8 +27,6 @@ read passwd
 printf "请输入uuid：\n"
 read uuid
 
-printf "证书文件如下：\n"
-ls ${path}/nginx/conf.d/ssl
 
 echo "passwd: ${passwd}"
 echo "uuid: ${uuid}"
@@ -53,10 +50,23 @@ rm get-docker.sh
 systemctl enable docker
 
 # 启动
-systemctl start docker
+systemctl restart docker
 
 
 if [[ "${containers[@]}" =~ "nginx" ]]; then
+
+    printf "请上传SSL证书至 ${path}/nginx/conf.d/ssl\n"
+
+    printf "如果已确认，请输入yes...\n"
+    read ready
+    if [ "$ready" != "yes" ]; then
+      printf "信息有误，退出部署...\n"
+      exit 1
+    fi
+
+    printf "证书文件如下：\n"
+    ls ${path}/nginx/conf.d/ssl
+
     printf "启动Nginx容器...\n"
     docker run -itd --name openresty --restart=always -p 80:80 -p 443:443 -v "${path}/nginx/conf.d:/etc/nginx/conf.d" -v "${path}/workspace/data:/data" openresty/openresty:latest
 fi
