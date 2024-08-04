@@ -1,6 +1,6 @@
 const groupBase = {
-  interval: 300, // 单位s
-  timeout: 5, // 单位s
+  interval: 300, // 健康检查间隔，如不为 0 则启用定时测试，单位为秒
+  timeout: 5, // 健康检查超时时间，单位为毫秒
   url: "https://www.google.com/generate_204",
   lazy: true,
   "max-failed-times": 3,
