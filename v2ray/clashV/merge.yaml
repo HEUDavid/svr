@@ -1,3 +1,7 @@
+profile:
+  store-selected: true
+  store-fake-ip: true
+
 #prepend-proxies:
 #  # if client is clashN
 #  - name: mDavid_CN
