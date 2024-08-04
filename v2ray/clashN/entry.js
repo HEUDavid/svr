@@ -19,7 +19,7 @@ function main(config) {
     config["proxy-groups"].forEach((group) => {
       if (group.name === "SUB") {
         group.use = providerNames;
-        group.proxies = null;
+        group.proxies = [];
       }
     });
   }
