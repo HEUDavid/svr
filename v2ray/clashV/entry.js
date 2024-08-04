@@ -13,6 +13,21 @@ function main(config, profileName) {
   if (proxyCount === 0 && proxyProviderCount === 0) {
     throw new Error("配置文件中未找到任何代理");
   }
+  const sub = {
+    "name": "SUB",
+    "type": "url-test",
+    "tolerance": 50,
+    "icon": "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/link.svg",
+    ...groupBaseOption,
+  };
+  if (proxyCount > 0) {
+    sub.proxies = config.proxies
+      .map((proxy) => proxy.name)
+      .filter((name) => !name.includes("mDavid"));
+  }
+  if (proxyProviderCount > 0) {
+    sub.use = Object.keys(config["proxy-providers"]);
+  }
   config["proxy-groups"] = [
     {
       "name": "PROXY",
@@ -36,15 +51,7 @@ function main(config, profileName) {
       "filter": ".*mDavid.*",
       "icon": "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/speed.svg"
     },
-    {
-      "name": "SUB",
-      "type": "url-test",
-      "tolerance": 50,
-      "include-all": true,
-      "exclude-filter": ".*mDavid.*",
-      "icon": "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/link.svg",
-      ...groupBaseOption,
-    },
+    sub,
     {
       "name": "FINAL",
       "type": "select",
