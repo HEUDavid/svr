@@ -25,14 +25,14 @@ function M.get_files(path)
 end
 
 function M.get_node()
-    local cmd = "python3 " .. root .. "get_node.py 2>&1"
+    local cmd = "python3 " .. root .. "py/get_node.py 2>&1"
     local handle = io.popen(cmd)
     local result = handle:read("*a")
     handle:close()
     return result
 end
 
-local debug = false
+local debug = true
 
 if debug == false then
     -- dispatcher
