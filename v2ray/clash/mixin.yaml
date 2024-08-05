@@ -23,6 +23,7 @@ mixin: # object
       - '*.lan'
       - apps.apple.com
       - localhost.ptlogin2.qq.com
+      - localhost.weixin.qq.com
     fallback:
       - tcp://1.1.1.1
       - tls://223.5.5.5:853
