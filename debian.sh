@@ -13,11 +13,11 @@ path=/root/svr
 
 # 需要启动的服务项
 containers=(
-    "nginx"
-#    "mysql"
     "v2ray"
-#    "python"
+    "nginx"
+    "python"
 #    "golang"
+#    "mysql"
 )
 
 
