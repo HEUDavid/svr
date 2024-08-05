@@ -8,29 +8,25 @@ dns:
   ipv6: false
   listen: 0.0.0.0:53
   nameserver:
-    - https://dns.google/dns-query
-    - https://cloudflare-dns.com/dns-query
+    - 8.8.8.8
     - 223.5.5.5
-    - 223.6.6.6
-    - 180.76.76.76
-    - 114.114.114.114
     - 119.29.29.29
+    - 180.76.76.76
+    - 223.6.6.6
   default-nameserver:
+    - 8.8.8.8
     - 223.5.5.5
-    - 223.6.6.6
-    - 180.76.76.76
-    - 114.114.114.114
     - 119.29.29.29
+    - 180.76.76.76
+    - 223.6.6.6
   nameserver-policy:
     geosite:geolocation-!cn:
-      - https://dns.google/dns-query
-      - https://cloudflare-dns.com/dns-query
+      - 8.8.8.8
     geosite:cn:
       - 223.5.5.5
-      - 223.6.6.6
-      - 180.76.76.76
-      - 114.114.114.114
       - 119.29.29.29
+      - 180.76.76.76
+      - 223.6.6.6
   enhanced-mode: fake-ip
   fake-ip-range: 198.18.0.1/16
   fake-ip-filter:
