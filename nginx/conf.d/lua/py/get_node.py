@@ -72,8 +72,11 @@ def get_node_v2():
     if response.status_code != 200:
         print("get_free_v2:", response.status_code, response.text)
         return None
-    data = json.loads(response.text)
-    url = data['output'][0].split(' ')[1]
+    data = response.json()
+    raw = str(data['output'])
+    s = raw.index('http')
+    e = raw.index(r"']")
+    url = raw[s:e]
     response = requests.get(url)
     print(response.text)
 
