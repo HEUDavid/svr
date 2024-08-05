@@ -110,9 +110,9 @@ parsers:
       # file: noinspection YAMLSchemaValidation
       prepend-rules:
         # > Google
-        - DOMAIN-SUFFIX,googletraveladservices.com,DIRECT
-        - DOMAIN,dl.google.com,DIRECT
-        - DOMAIN,mtalk.google.com,DIRECT
+        - DOMAIN-SUFFIX,googletraveladservices.com,PROXY
+        - DOMAIN,dl.google.com,PROXY
+        - DOMAIN,mtalk.google.com,PROXY
         # Internet Service Providers Hijacking 运营商劫持
         - DOMAIN-SUFFIX,17gouwuba.com,REJECT
         - DOMAIN-SUFFIX,186078.com,REJECT
