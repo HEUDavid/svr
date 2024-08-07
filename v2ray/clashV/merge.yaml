@@ -5,7 +5,7 @@ profile:
 dns:
   enable: true
   prefer-h3: false
-  ipv6: false
+  ipv6: true
   listen: 0.0.0.0:53
   nameserver:
     - 8.8.8.8
@@ -41,17 +41,6 @@ dns:
     geoip: true
     ipcidr:
       - 240.0.0.0/4
-
-#prepend-proxies:
-#  # if client is clashN
-#  - name: mDavid_CN
-#    type: vmess
-#    server: ip
-#    port: 10086
-#    uuid: abc
-#    alterId: 0
-#    cipher: none
-#    udp: true
 
 used-rule-providers:
   - mdavid_proxy
