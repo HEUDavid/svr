@@ -77,8 +77,9 @@ def get_node_v2():
     s = raw.index('http')
     e = raw.index(r"']")
     url = raw[s:e]
-    response = requests.get(url)
-    print(response.text)
+    print(url)
+    # response = requests.get(url)
+    # print(response.text)
 
 
 def get_node_turbo_vpn():
