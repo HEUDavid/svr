@@ -32,7 +32,7 @@ function M.get_node()
     return result
 end
 
-local debug = true
+local debug = false
 
 if debug == false then
     -- dispatcher
