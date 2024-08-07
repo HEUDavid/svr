@@ -2,7 +2,7 @@ mixin:
   dns:
     enable: true
     prefer-h3: false
-    ipv6: false
+    ipv6: true
     listen: 0.0.0.0:53
     nameserver:
       - 8.8.8.8
