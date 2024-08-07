@@ -5,7 +5,7 @@ containers=(
 	"nginx"
 	"v2ray"
 	"python"
-	"v2ray"
+	"golang"
 )
 echo 'all containers:'
 printf '%s\n' "${containers[@]}"
