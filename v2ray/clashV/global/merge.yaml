@@ -1,9 +1,0 @@
-my-local-proxies:
-  - name: mDavid_CN
-    type: vmess
-    uuid: abc
-    server: ip
-    port: 10086
-    alterId: 0
-    cipher: auto
-    udp: true
