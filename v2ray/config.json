@@ -6,7 +6,6 @@
       "settings": {
         "clients": [
           {
-            "alterId": 64,
             "id": "uuid_for_update"
           }
         ]
