@@ -70,11 +70,11 @@ parsers:
       prepend-proxies:
         - name: mDavid_CN
           type: vmess
+          uuid: abc
           server: ip
           port: 10086
-          uuid: abc
           alterId: 0
-          cipher: none
+          cipher: auto
           udp: true
 
       mix-rule-providers:
