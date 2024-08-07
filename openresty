@@ -1,0 +1,8 @@
+# 安装luarocks
+docker exec -it openresty /bin/bash
+apt-get update
+apt-get install -y luarocks
+
+luarocks list
+luarocks install luafilesystem
+luajit -e 'require("lfs"); print("LuaFileSystem version:", lfs._VERSION)'
