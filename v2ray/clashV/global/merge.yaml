@@ -4,6 +4,6 @@ my-local-proxies:
     uuid: abc
     server: ip
     port: 10086
-    alterId: 64
+    alterId: 0
     cipher: auto
     udp: true
