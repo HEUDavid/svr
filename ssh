@@ -1,0 +1,16 @@
+# 先使用admin登录
+chmod 400 "mdavid-cn.pem"
+ssh -i "mdavid-cn.pem" admin@ip
+
+# 更新root密码
+sudo passwd root
+
+# 切换到root用户修改ssh配置以允许root远程登录
+su - root
+
+vi /etc/ssh/ssh_config
+
+PermitRootLogin yes
+PasswordAuthentication yes
+
+systemctl restart sshd
