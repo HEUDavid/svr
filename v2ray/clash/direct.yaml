@@ -1,6 +1,6 @@
 payload:
   # linux.do
-  - DOMAIN-SUFFIX,linux.do
+  # - DOMAIN-SUFFIX,linux.do
   - DOMAIN-SUFFIX,oaifree.com
   # api service
   - DOMAIN-SUFFIX,deepl.com
