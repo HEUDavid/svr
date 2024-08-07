@@ -6,3 +6,7 @@ apt-get install -y luarocks
 luarocks list
 luarocks install luafilesystem
 luajit -e 'require("lfs"); print("LuaFileSystem version:", lfs._VERSION)'
+
+# 安装python环境
+apt-get install -y python3 python3-pip
+pip3 install requests
