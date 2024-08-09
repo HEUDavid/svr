@@ -10,7 +10,7 @@ module.exports.parse = (raw, {yaml}) => {
   };
   const subGroup = {
     name: "SUB",
-    type: "url-test",
+    type: "select",
     tolerance: 50, // 节点切换容差，单位 ms
     ...groupBase,
   };
